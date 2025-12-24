@@ -1,0 +1,82 @@
+﻿
+
+@inherits LayoutComponentBase
+@inject IJSRuntime JS
+
+<div id="app" class="app-container">
+    <header class="main-header">
+        <div class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor" />
+            </svg>
+            <span>TourneyPro</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:1rem;">
+            <!-- Global Search -->
+            <div style="position:relative;">
+                <input @oninput="HandleSearch" value="@SearchText" placeholder="Search player..." 
+                       style="padding:0.4rem 2rem 0.4rem 0.8rem; font-size:0.9rem; width:200px; background:rgba(255,255,255,0.1); border:1px solid var(--border); border-radius:20px; color:var(--text-main);" />
+                <span style="position:absolute; right:10px; top:50%; transform:translateY(-50%); pointer-events:none; opacity:0.6;">🔍</span>
+                @if (!string.IsNullOrEmpty(SearchText))
+                {
+                     <button @onclick="ClearSearch" style="position:absolute; right:30px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--text-muted); cursor:pointer;">✕</button>
+                }
+            </div>
+
+            <nav>
+                <NavLink class="nav-item" href="" Match="NavLinkMatch.All">Setup</NavLink>
+                <NavLink class="nav-item" href="players">Players</NavLink>
+                <NavLink class="nav-item" href="schedule">Schedule</NavLink>
+                <NavLink class="nav-item" href="scores">Scores</NavLink>
+                <NavLink class="nav-item" href="about">About</NavLink>
+            </nav>
+            <button class="nav-item" @onclick="ToggleTheme" style="font-size:1.2rem; padding:0.25rem 0.5rem;" title="Toggle Theme">
+                @(IsDark ? "🌙" : "☀")
+            </button>
+        </div>
+    </header>
+
+    <main id="main-content">
+        @Body
+    </main>
+</div>
+
+@code {
+    [Inject] TournamentState State { get; set; } = default!;
+
+    private bool IsDark = true; // Default to Dark
+    private string SearchText = "";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Ensure JS knows we are in dark mode (optional if CSS default is robust, but good for state sync)
+            await JS.InvokeVoidAsync("setTheme", "dark");
+        }
+    }
+
+    private void HandleSearch(ChangeEventArgs e)
+    {
+        SearchText = e.Value?.ToString() ?? "";
+        State.SetSearch(SearchText);
+    }
+
+    private void ClearSearch()
+    {
+        SearchText = "";
+        State.SetSearch("");
+    }
+
+    private async Task ToggleTheme()
+    {
+        IsDark = !IsDark;
+        await JS.InvokeVoidAsync("setTheme", IsDark ? "dark" : "light");
+    }
+}
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>

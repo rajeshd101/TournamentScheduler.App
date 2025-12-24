@@ -1,0 +1,518 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+    /* DARK MODE (Default - Deep Premium Glass) */
+    /* Background: Rich deep blue/slate gradient */
+    --bg-app: radial-gradient(circle at top left, #0f172a, #020617);
+
+    /* Panel: Highly blurred, slightly translucent dark layer */
+    --bg-panel: rgba(15, 23, 42, 0.6);
+
+    /* Card: Almost invisible, just a textural change */
+    --bg-card: rgba(255, 255, 255, 0.03);
+
+    --bg-input: rgba(0, 0, 0, 0.2);
+
+    /* Vibrant Accents */
+    --primary: #3b82f6;
+    /* Electric Blue */
+    --primary-hover: #2563eb;
+    --accent: #8b5cf6;
+    /* Vivid Purple */
+    --success: #10b981;
+    --danger: #ef4444;
+
+    /* Typography */
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --text-input: #ffffff;
+
+    /* Borders & Glass Effects */
+    --border: rgba(255, 255, 255, 0.08);
+    /* Subtle crisp border */
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-highlight: rgba(255, 255, 255, 0.05);
+    /* Top shine */
+
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+
+    --backdrop-blur: 20px;
+}
+
+/* Light Mode Overrides */
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme="dark"]) {
+        --bg-app: #f1f5f9;
+        /* Soft gray-blue */
+        --bg-panel: rgba(255, 255, 255, 0.7);
+        --bg-card: rgba(255, 255, 255, 0.6);
+        --bg-input: rgba(0, 0, 0, 0.05);
+
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --text-input: #0f172a;
+
+        --border: rgba(0, 0, 0, 0.08);
+        --glass-border: rgba(255, 255, 255, 0.6);
+        --glass-highlight: rgba(255, 255, 255, 0.4);
+
+        --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    }
+}
+
+[data-theme="light"] {
+    --bg-app: #f1f5f9;
+    --bg-panel: rgba(255, 255, 255, 0.7);
+    --bg-card: rgba(255, 255, 255, 0.6);
+    --bg-input: rgba(0, 0, 0, 0.05);
+    --text-main: #0f172a;
+    --text-muted: #64748b;
+    --text-input: #0f172a;
+    --border: rgba(0, 0, 0, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.6);
+    --glass-highlight: rgba(255, 255, 255, 0.4);
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-app);
+    color: var(--text-main);
+    height: 100vh;
+    overflow: hidden;
+    transition: background 0.5s ease, color 0.3s ease;
+    font-size: 15px;
+    letter-spacing: -0.01em;
+    /* Modern tight spacing */
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* --- Header --- */
+.main-header {
+    background: var(--bg-panel);
+    backdrop-filter: blur(var(--backdrop-blur));
+    -webkit-backdrop-filter: blur(var(--backdrop-blur));
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    /* Subtle shine at top */
+    box-shadow: inset 0 1px 0 0 var(--glass-highlight);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.3rem;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+}
+
+nav {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    /* Nav pill container */
+    padding: 4px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.nav-item {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+    color: white !important;
+    background: var(--primary);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+}
+
+/* --- Content Area --- */
+#main-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    position: relative;
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+}
+
+.view-section {
+    display: none;
+    width: 100%;
+    flex: 1;
+    animation: fadeUp 0.4s ease-out;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.view-section.active {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Glass Panels --- */
+.glass-panel {
+    background: var(--bg-panel);
+    backdrop-filter: blur(var(--backdrop-blur));
+    -webkit-backdrop-filter: blur(var(--backdrop-blur));
+    border: 1px solid var(--glass-border);
+    border-top: 1px solid var(--glass-highlight);
+    /* Top light source */
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    color: var(--text-main);
+    /* Explicit text color */
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    /* Gradient Text with Fallback */
+    color: var(--text-main);
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    /* Lighter gradient for dark mode */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+/* Light Mode H1 Override */
+@media (prefers-color-scheme: light) {
+    h1 {
+        background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+[data-theme="light"] h1 {
+    background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h3 {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+/* --- Buttons --- */
+.btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Shine effect */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+    pointer-events: none;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn.secondary {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+    box-shadow: none;
+}
+
+.btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--text-muted);
+}
+
+.btn.secondary::after {
+    display: none;
+}
+
+/* --- Inputs --- */
+input,
+select,
+textarea {
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    color: var(--text-input);
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.2s;
+}
+
+/* Fix option backgrounds for Select dropdowns */
+option {
+    background-color: #0f172a;
+    /* Dark Slate for Dark Mode defaults */
+    color: #ffffff;
+}
+
+/* Light Mode Option Override */
+@media (prefers-color-scheme: light) {
+    option {
+        background-color: #ffffff;
+        color: #0f172a;
+    }
+}
+
+[data-theme="light"] option {
+    background-color: #ffffff;
+    color: #0f172a;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-input);
+    /* Ensure color remains readable */
+}
+
+/* --- Specific Modules --- */
+
+/* Schedule Round Groups */
+.round-group {
+    background: var(--bg-card);
+    /* Ultra subtle */
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.round-group h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+}
+
+/* Live Score Match Style Tiles */
+.match-card {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.match-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.3);
+    border-color: var(--primary);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.match-info {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    display: flex;
+    justify-content: space-between;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.match-players {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.vs-badge {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.2rem 0.5rem;
+    border-radius: 99px;
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.stat-label {
+    margin-top: 0.5rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Print Defaults */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        height: auto !important;
+        overflow: visible !important;
+    }
+
+    .app-container,
+    #main-content,
+    .view-section,
+    .view-section.active {
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+
+    .main-header,
+    .btn,
+    .nav-item,
+    nav {
+        display: none !important;
+    }
+
+    .glass-panel,
+    .match-card,
+    .round-group {
+        background: none !important;
+        border: 1px solid #ccc !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .schedule-matrix-table {
+        width: 100% !important;
+    }
+
+    /* Ensure table rows don't break across pages */
+    tr {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Force all content to be visible */
+    .center-panel,
+    .schedule-layout,
+    .schedule-center {
+        overflow: visible !important;
+        height: auto !important;
+        max-height: none !important;
+    }
+}

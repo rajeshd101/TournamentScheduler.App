@@ -1,0 +1,13 @@
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\TournamentScheduler.App.exe
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\appsettings.Development.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\appsettings.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\Exports\tournament_data.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\MyTournament\MyTournament.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\Tournaments\Lynnwood\Lynnwood.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\Tournaments\Lynwood Christmas 2025.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\Tournaments\MyTournament.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\Tournaments\MyTournament\MyTournament.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\TournamentScheduler.App.dll
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\TournamentScheduler.App.deps.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\TournamentScheduler.App.runtimeconfig.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\publish\TournamentScheduler.App.pdb

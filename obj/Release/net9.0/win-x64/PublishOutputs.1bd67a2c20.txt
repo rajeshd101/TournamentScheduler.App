@@ -1,0 +1,4 @@
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\dist\appsettings.Development.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\dist\appsettings.json
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\dist\aspnetcorev2_inprocess.dll
+C:\Users\draje\.gemini\antigravity\scratch\tournament_scheduler\TournamentScheduler.App\dist\TournamentScheduler.App.exe

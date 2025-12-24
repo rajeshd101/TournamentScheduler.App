@@ -1,0 +1,757 @@
+
+@page "/scores"
+@inject TournamentState State
+
+<div class="view-section active">
+    <div class="card glass-panel">
+        <div class="section-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem;">
+            <h1>Match Scores</h1>
+            <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap;">
+                <div style="display:flex; align-items:center; gap:0.5rem;">
+                    <span style="font-size:0.85rem; color:var(--text-muted);">Auto-refresh:</span>
+                    <select @bind="RefreshInterval" @bind:after="UpdateTimer" style="padding:0.25rem 0.5rem; font-size:0.85rem;">
+                        <option value="0">Off</option>
+                        <option value="15000">15 sec</option>
+                        <option value="30000">30 sec</option>
+                        <option value="60000">1 min</option>
+                        <option value="300000">5 min</option>
+                    </select>
+                </div>
+                <span style="font-size:0.9rem; color:var(--text-muted)">Auto-saved</span>
+                <button class="btn primary" @onclick="EndTournament" style="display:flex; align-items:center; gap:0.5rem;">
+                    🏆 End Tournament
+                </button>
+            </div>
+        </div>
+
+        @if (!State.Schedule.Any())
+        {
+            <p style="text-align:center; padding: 2rem; color: var(--text-muted);">
+                No matches scheduled yet. Go to <a href="schedule">Schedule</a> to generate games.
+            </p>
+        }
+        else
+        {
+            @* Current Round and Next Round Display Section *@
+            var currentRound = GetCurrentRound();
+            var nextRound = GetNextRound();
+            
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem; margin-bottom:1.5rem;">
+                @* Current Round Panel *@
+                <div class="glass-panel" style="padding:1rem; border-left:4px solid #ffc107; background:rgba(255,193,7,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                        <h3 style="margin:0; color:#ffc107; font-size:1rem;">🎯 Current Round @(currentRound?.Key ?? 0)</h3>
+                        @if(currentRound != null)
+                        {
+                            <span style="font-size:0.85rem; color:var(--text-muted);">@currentRound.First().Time</span>
+                        }
+                    </div>
+                    @if(currentRound != null)
+                    {
+                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                            @foreach(var m in currentRound)
+                            {
+                                <div style="background:rgba(255,255,255,0.05); border-radius:6px; padding:0.5rem; flex:1; min-width:200px;">
+                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.25rem;">Court @m.Court</div>
+                                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                                        <div style="display:flex; gap:4px;">
+                                            <span style="@GetPlayerStyle(m.P1)">@m.P1.Name</span>
+                                            <span style="@GetPlayerStyle(m.P2)">@m.P2.Name</span>
+                                        </div>
+                                        <span style="font-weight:bold; color:var(--accent); font-size:0.9rem;">
+                                            @(m.Score1?.ToString() ?? "-") : @(m.Score2?.ToString() ?? "-")
+                                        </span>
+                                        <div style="display:flex; gap:4px;">
+                                            <span style="@GetPlayerStyle(m.P3)">@m.P3.Name</span>
+                                            <span style="@GetPlayerStyle(m.P4)">@m.P4.Name</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">All matches completed! 🎉</p>
+                    }
+                </div>
+                
+                @* Next Round Panel *@
+                <div class="glass-panel" style="padding:1rem; border-left:4px solid #42a5f5; background:rgba(66,165,245,0.05);">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                        <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Next Round @(nextRound?.Key ?? 0)</h3>
+                        @if(nextRound != null)
+                        {
+                            <span style="font-size:0.85rem; color:var(--text-muted);">@nextRound.First().Time</span>
+                        }
+                    </div>
+                    @if(nextRound != null)
+                    {
+                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                            @foreach(var m in nextRound)
+                            {
+                                <div style="background:rgba(255,255,255,0.05); border-radius:6px; padding:0.5rem; flex:1; min-width:200px;">
+                                    <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.25rem;">Court @m.Court</div>
+                                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                                        <div style="display:flex; gap:4px;">
+                                            <span style="@GetPlayerStyle(m.P1)">@m.P1.Name</span>
+                                            <span style="@GetPlayerStyle(m.P2)">@m.P2.Name</span>
+                                        </div>
+                                        <span style="font-weight:bold; color:var(--text-muted); font-size:0.8rem;">vs</span>
+                                        <div style="display:flex; gap:4px;">
+                                            <span style="@GetPlayerStyle(m.P3)">@m.P3.Name</span>
+                                            <span style="@GetPlayerStyle(m.P4)">@m.P4.Name</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">This is the final round</p>
+                    }
+                </div>
+            </div>
+@implements IDisposable
+@inject NavigationManager Nav
+
+<style>
+    @@keyframes flash-amber {
+        0% { box-shadow: 0 0 2px rgba(255, 193, 7, 0.1); border-color: rgba(255, 193, 7, 0.2); }
+        50% { box-shadow: 0 0 12px rgba(255, 193, 7, 0.6); border-color: rgba(255, 193, 7, 0.8); background-color: rgba(255, 193, 7, 0.05); }
+        100% { box-shadow: 0 0 2px rgba(255, 193, 7, 0.1); border-color: rgba(255, 193, 7, 0.2); }
+    }
+    
+    @@keyframes flash-text-amber {
+        0% { text-shadow: 0 0 2px rgba(255, 193, 7, 0); color: inherit; }
+        50% { text-shadow: 0 0 8px rgba(255, 193, 7, 0.8); color: #ffca28; }
+        100% { text-shadow: 0 0 2px rgba(255, 193, 7, 0); color: inherit; }
+    }
+
+    .active-round {
+        animation: flash-amber 2s infinite ease-in-out;
+        border: 1px solid rgba(255, 193, 7, 0.3) !important;
+    }
+
+    .active-player-name {
+        animation: flash-text-amber 2s infinite ease-in-out;
+        font-weight: bold;
+    }
+
+    /* Responsive Grid Layout */
+    .dashboard-layout {
+        display: grid;
+        grid-template-columns: 1fr 2.5fr 1fr; /* Constant Ratio: Sides approx 22%, Center 55% */
+        grid-template-rows: 1fr;
+        grid-template-areas: "men scores women";
+        gap: 0.5rem; /* Reduced from 1rem */
+        height: calc(100vh - 180px);
+        overflow: hidden;
+        font-size: 1rem;
+    }
+
+    .men-panel { grid-area: men; }
+    .women-panel { grid-area: women; }
+    .center-panel { grid-area: scores; }
+
+    /* Responsive Breakpoint */
+    @@media (max-width: 1400px) {
+        .dashboard-layout {
+            grid-template-columns: 1fr 1fr; /* Constant 50/50 Ratio for top panels */
+            grid-template-rows: minmax(400px, 45vh) 1fr; /* Leaderboards on top, Scores below */
+            grid-template-areas: 
+                "men women"
+                "scores scores";
+            overflow-y: hidden; 
+        }
+        
+        .side-panel {
+            width: 100% !important; 
+        }
+    }
+</style>
+
+            <div class="dashboard-layout">
+                
+                <!-- LEFT: Men's Panels -->
+                <div class="side-panel men-panel glass-panel" style="display:flex; flex-direction:column; overflow:hidden; padding:0;">
+                    <!-- Top 10 (Fixed height to show all 10) -->
+                    <div style="flex:0 0 auto; display:flex; flex-direction:column; border-bottom:1px solid rgba(255,255,255,0.1);">
+                        <h3 style="color: #42a5f5; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 0.5rem; margin:0; background:rgba(0,0,0,0.2); font-size:0.9rem;">Men's Top 10</h3>
+                        <div style="padding: 0.25rem;">
+                            <table class="table" style="color: inherit; font-size:0.8rem; width:100%; margin-bottom:0; border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <th style="width:15%; padding:4px;">#</th>
+                                        <th style="padding:4px;">Player</th>
+                                        <th style="text-align: center; padding:4px;">Won</th>
+                                        <th style="text-align: right; padding:4px;">Pts</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var p in GetTopPlayers("M"))
+                                    {
+                                        var playerColor = State.Players.FirstOrDefault(x => x.Id == p.PlayerId)?.Color ?? "transparent";
+                                        var rowStyle = "border-bottom: 1px solid rgba(255,255,255,0.05);";
+                                        if (p.Rank <= 3) 
+                                        {
+                                            string txt = State.GetContrastColor(playerColor);
+                                            rowStyle += $" background-color: {playerColor}; color: {txt}; font-weight:bold;";
+                                        }
+
+                                        <tr style="@rowStyle">
+                                            <td style="padding:2px 4px;">@(p.Rank)</td>
+                                            <td style="padding:2px 4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:90px;">@p.Name</td>
+                                            <td style="text-align: center; padding:2px 4px;">@p.Wins</td>
+                                            <td style="text-align: right; padding:2px 4px;">@p.Points</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats (Fills remaining) -->
+                    <div style="flex:1; display:flex; flex-direction:column; min-height:0;">
+                        <h3 style="color: #90caf9; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 0.5rem; margin:0; background:rgba(0,0,0,0.2); font-size:0.9rem;">Men's Participation</h3>
+                         <div style="overflow-y: auto; flex:1; padding: 0.25rem;">
+                             <table class="table" style="color: inherit; font-size:0.8rem; width:100%; margin-bottom:0; border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <th style="padding:4px;">Player</th>
+                                        <th style="text-align:center; padding:4px;">Tot</th>
+                                        <th style="text-align:center; padding:4px;">Pld</th>
+                                        <th style="text-align:center; padding:4px;">Rem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ var activeM = GetActivePlayersMap(); }
+                                    @foreach(var item in GetScheduleStats("M"))
+                                    {
+                                        bool isActive = activeM.Contains(State.Players.FirstOrDefault(x => x.Name == item.Name)?.Id ?? "");
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); @(isActive ? "background:rgba(255, 193, 7, 0.1);" : "")">
+                                            <td style="padding:2px 4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:90px; @(isActive ? "font-weight:bold; color:#ffca28;" : "")">@item.Name</td>
+                                            <td style="text-align:center; padding:2px 4px;">@item.Total</td>
+                                            <td style="text-align:center; padding:2px 4px; color:#a5d6a7;">@item.Played</td>
+                                            <td style="text-align:center; padding:2px 4px; color:#ef9a9a;">@item.Remaining</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CENTER: Schedule -->
+                <div class="center-panel" style="overflow-y: auto; overflow-x: hidden; padding-right: 0.25rem; padding-left: 0.25rem;">
+                    @foreach (var group in GetFilteredSchedule().GroupBy(m => m.Round).OrderBy(g => g.Key))
+                    {
+                        bool isActiveRound = IsRoundActive(group.First().Time);
+                        bool isAutoLocked = IsRoundLocked(group.Key);
+                        bool isNotStarted = !HasRoundStarted(group.First().Time);
+                        bool isManuallyUnlocked = _unlockedRounds.Contains(group.Key);
+                        bool isLocked = (isAutoLocked || isNotStarted || !isActiveRound) && !isManuallyUnlocked;
+                        bool isDisabled = isLocked;
+                        
+                        <div class="round-group glass-panel @(isActiveRound ? "active-round" : "")" style="margin-bottom:0.5rem; padding:0.5rem; transition: all 0.5s; opacity: @(isLocked ? "0.7" : "1");">
+                            <h3 style="border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:0.25rem; margin-bottom:0.5rem; margin-top:0; font-size:1rem; display:flex; justify-content:space-between; align-items:center;">
+                                <span>
+                                    Round @group.Key 
+                                    <span style="font-weight:400; color:var(--text-muted); font-size:0.9em; margin-left:1rem;">
+                                        @group.First().Time
+                                        @if(isLocked) { 
+                                            <button @onclick="@(() => ToggleLock(group.Key))" style="margin-left:0.5rem; background:none; border:none; cursor:pointer; padding:0;" title="Click to unlock">
+                                                🔒
+                                            </button>
+                                        }
+                                        else if (!isActiveRound) {
+                                            <button @onclick="@(() => ToggleLock(group.Key))" style="margin-left:0.5rem; background:none; border:none; cursor:pointer; padding:0;" title="Click to lock">
+                                                🔓
+                                            </button>
+                                        }
+                                    </span>
+                                </span>
+                                @if(isActiveRound) { <span style="color:#ffc107; font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; font-weight:bold;">Live Now</span> }
+                            </h3>
+                            
+                            <div class="score-grid" style="display:grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap:0.5rem;">
+                                @foreach (var m in group)
+                                {
+                                    <div class="match-card" style="display:flex; flex-direction:column; gap:0.25rem; background:rgba(255,255,255,0.05); padding:0.5rem; border-radius:8px;">
+                                        <div style="display:flex; justify-content:space-between; color:var(--text-muted); font-size:0.75rem;">
+                                            <span>Court @m.Court</span>
+                                            <span>Serve: @(m.ServingTeam == 1 ? "⬅" : "➡")</span>
+                                        </div>
+
+                                        <div class="score-row" style="display:flex; align-items:center; gap:0.25rem;">
+                                            <!-- Team 1 -->
+                                            <div style="flex:1; text-align:right; display:flex; flex-direction:column; gap:2px; align-items:flex-end;">
+                                                <div style="display:flex; align-items:center; gap:2px;">
+                                                    @if(m.ServingTeam == 1) { <span style="font-size:0.8rem;" title="Serves first">🏓</span> }
+                                                    <div style="@GetPlayerStyle(m.P1)" class="@(isActiveRound ? "active-player-name" : "")">@m.P1.Name</div>
+                                                </div>
+                                                <div style="display:flex; align-items:center; gap:2px;">
+                                                    <div style="@GetPlayerStyle(m.P2)" class="@(isActiveRound ? "active-player-name" : "")">@m.P2.Name</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Inputs -->
+                                            <div style="display:flex; gap:0.25rem; align-items:center;">
+                                                <input type="number" value="@m.Score1" 
+                                                       @onchange="@(e => UpdateScore(m, 1, e.Value))"
+                                                       disabled="@isDisabled"
+                                                       style="@GetInputStyle(m.Score1, m.Score2)" />
+                                                <span style="color:var(--accent); font-weight:bold; font-size:0.9rem;">:</span>
+                                                <input type="number" value="@m.Score2" 
+                                                       @onchange="@(e => UpdateScore(m, 2, e.Value))"
+                                                       disabled="@isDisabled"
+                                                       style="@GetInputStyle(m.Score2, m.Score1)" />
+                                            </div>
+
+                                            <!-- Team 2 -->
+                                            <div style="flex:1; text-align:left; display:flex; flex-direction:column; gap:2px; align-items:flex-start;">
+                                                <div style="display:flex; align-items:center; gap:2px;">
+                                                    <div style="@GetPlayerStyle(m.P3)" class="@(isActiveRound ? "active-player-name" : "")">@m.P3.Name</div>
+                                                    @if(m.ServingTeam == 2) { <span style="font-size:0.8rem;" title="Serves first">🏓</span> }
+                                                </div>
+                                                <div style="display:flex; align-items:center; gap:2px;">
+                                                    <div style="@GetPlayerStyle(m.P4)" class="@(isActiveRound ? "active-player-name" : "")">@m.P4.Name</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <!-- RIGHT: Women's Panels -->
+                 <div class="side-panel women-panel glass-panel" style="display:flex; flex-direction:column; overflow:hidden; padding:0;">
+                    <!-- Top 10 (Fixed height to show all 10) -->
+                    <div style="flex:0 0 auto; display:flex; flex-direction:column; border-bottom:1px solid rgba(255,255,255,0.1);">
+                        <h3 style="color: #f06292; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 0.75rem; margin:0; background:rgba(0,0,0,0.2); font-size:0.95rem;">Women's Top 10</h3>
+                        <div style="padding: 0.25rem;">
+                            <table class="table" style="color: inherit; font-size:0.8rem; width:100%; margin-bottom:0; border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <th style="width:15%; padding:4px;">#</th>
+                                        <th style="padding:4px;">Player</th>
+                                        <th style="text-align: center; padding:4px;">Won</th>
+                                        <th style="text-align: right; padding:4px;">Pts</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var p in GetTopPlayers("F"))
+                                    {
+                                        var playerColor = State.Players.FirstOrDefault(x => x.Id == p.PlayerId)?.Color ?? "transparent";
+                                        var rowStyle = "border-bottom: 1px solid rgba(255,255,255,0.05);";
+                                        if (p.Rank <= 3) 
+                                        {
+                                            string txt = State.GetContrastColor(playerColor);
+                                            rowStyle += $" background-color: {playerColor}; color: {txt}; font-weight:bold;";
+                                        }
+
+                                        <tr style="@rowStyle">
+                                            <td style="padding:2px 4px;">@(p.Rank)</td>
+                                            <td style="padding:2px 4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:90px;">@p.Name</td>
+                                            <td style="text-align: center; padding:2px 4px;">@p.Wins</td>
+                                            <td style="text-align: right; padding:2px 4px;">@p.Points</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                     <!-- Stats (Fill) -->
+                    <div style="flex:1; display:flex; flex-direction:column; min-height:0;">
+                        <h3 style="color: #f48fb1; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 0.5rem 0.75rem; margin:0; background:rgba(0,0,0,0.2); font-size:0.95rem;">Women's Participation</h3>
+                         <div style="overflow-y: auto; flex:1; padding: 0.25rem;">
+                             <table class="table" style="color: inherit; font-size:0.8rem; width:100%; margin-bottom:0; border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <th style="padding:4px;">Player</th>
+                                        <th style="text-align:center; padding:4px;">Tot</th>
+                                        <th style="text-align:center; padding:4px;">Pld</th>
+                                        <th style="text-align:center; padding:4px;">Rem</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ var activeF = GetActivePlayersMap(); }
+                                    @foreach(var item in GetScheduleStats("F"))
+                                    {
+                                        bool isActive = activeF.Contains(State.Players.FirstOrDefault(x => x.Name == item.Name)?.Id ?? "");
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); @(isActive ? "background:rgba(255, 193, 7, 0.1);" : "")">
+                                            <td style="padding:2px 4px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:90px; @(isActive ? "font-weight:bold; color:#ffca28;" : "")">@item.Name</td>
+                                            <td style="text-align:center; padding:2px 4px;">@item.Total</td>
+                                            <td style="text-align:center; padding:2px 4px; color:#a5d6a7;">@item.Played</td>
+                                            <td style="text-align:center; padding:2px 4px; color:#ef9a9a;">@item.Remaining</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@if (_showCongratulations)
+{
+    <div style="position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:1000; display:flex; justify-content:center; align-items:center; backdrop-filter:blur(5px);">
+        <div style="background:linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border-radius:20px; padding:2rem; max-width:700px; width:90%; border:2px solid gold; box-shadow: 0 0 50px rgba(255,215,0,0.3);">
+            <div style="text-align:center; margin-bottom:2rem;">
+                <div style="font-size:4rem; margin-bottom:0.5rem;">🏆</div>
+                <h1 style="font-size:2rem; color:gold; margin:0; text-shadow:0 0 20px rgba(255,215,0,0.5);">Tournament Complete!</h1>
+                <p style="color:var(--text-muted); margin-top:0.5rem;">Congratulations to our winners!</p>
+            </div>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                <!-- Men's Top 3 -->
+                <div style="background:rgba(66,165,245,0.1); border-radius:12px; padding:1rem; border:1px solid rgba(66,165,245,0.3);">
+                    <h3 style="color:#42a5f5; text-align:center; margin-top:0;">🏅 Men's Champions</h3>
+                    @foreach (var p in GetTopPlayers("M").Take(3))
+                    {
+                        var medal = p.Rank == 1 ? "🥇" : p.Rank == 2 ? "🥈" : "🥉";
+                        var bgColor = p.Rank == 1 ? "rgba(255,215,0,0.2)" : p.Rank == 2 ? "rgba(192,192,192,0.2)" : "rgba(205,127,50,0.2)";
+                        <div style="display:flex; align-items:center; gap:0.75rem; padding:0.75rem; background:@bgColor; border-radius:8px; margin-bottom:0.5rem;">
+                            <span style="font-size:1.5rem;">@medal</span>
+                            <div>
+                                <div style="font-weight:bold; font-size:1.1rem;">@p.Name</div>
+                                <div style="font-size:0.85rem; color:var(--text-muted);">@p.Points pts • @p.Wins wins</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                
+                <!-- Women's Top 3 -->
+                <div style="background:rgba(240,98,146,0.1); border-radius:12px; padding:1rem; border:1px solid rgba(240,98,146,0.3);">
+                    <h3 style="color:#f06292; text-align:center; margin-top:0;">🏅 Women's Champions</h3>
+                    @foreach (var p in GetTopPlayers("F").Take(3))
+                    {
+                        var medal = p.Rank == 1 ? "🥇" : p.Rank == 2 ? "🥈" : "🥉";
+                        var bgColor = p.Rank == 1 ? "rgba(255,215,0,0.2)" : p.Rank == 2 ? "rgba(192,192,192,0.2)" : "rgba(205,127,50,0.2)";
+                        <div style="display:flex; align-items:center; gap:0.75rem; padding:0.75rem; background:@bgColor; border-radius:8px; margin-bottom:0.5rem;">
+                            <span style="font-size:1.5rem;">@medal</span>
+                            <div>
+                                <div style="font-weight:bold; font-size:1.1rem;">@p.Name</div>
+                                <div style="font-size:0.85rem; color:var(--text-muted);">@p.Points pts • @p.Wins wins</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            
+            <div style="text-align:center; margin-top:2rem;">
+                <button class="btn secondary" @onclick="CloseCongratulations" style="padding:0.75rem 2rem; font-size:1rem;">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private System.Threading.Timer? _timer;
+    private HashSet<int> _unlockedRounds = new(); // Track manually unlocked rounds
+    private bool _showCongratulations = false;
+    private int RefreshInterval = 60000; // Default 1 minute (in milliseconds)
+
+    protected override void OnInitialized()
+    {
+        State.OnChange += StateHasChanged;
+        State.OnSearchChanged += StateHasChanged;
+        // Start timer with default refresh interval
+        StartTimer();
+    }
+    
+    private void StartTimer()
+    {
+        _timer?.Dispose();
+        if (RefreshInterval > 0)
+        {
+            _timer = new System.Threading.Timer(_ => 
+            {
+                InvokeAsync(StateHasChanged);
+            }, null, RefreshInterval, RefreshInterval);
+        }
+    }
+    
+    private void UpdateTimer()
+    {
+        StartTimer();
+    }
+    
+    private void ToggleLock(int round)
+    {
+        if (_unlockedRounds.Contains(round))
+            _unlockedRounds.Remove(round);
+        else
+            _unlockedRounds.Add(round);
+    }
+    
+    private void EndTournament()
+    {
+        _showCongratulations = true;
+    }
+    
+    private void CloseCongratulations()
+    {
+        _showCongratulations = false;
+    }
+    
+    // ... (GetPlayerStyle, Dispose, etc remain same, omitted for brevity of replacement if unchanged but I need to include Dispose/State unsubscribe) ...
+    public void Dispose()
+    {
+        State.OnChange -= StateHasChanged; // Ensure unsubscribe
+        State.OnSearchChanged -= StateHasChanged;
+        _timer?.Dispose();
+    }
+
+    private string GetPlayerStyle(Player p)
+    {
+         var recent = State.Players.FirstOrDefault(x => x.Id == p.Id);
+         string color = recent?.Color ?? "#333";
+         string textColor = State.GetContrastColor(color);
+         return $"background-color: {color}; color: {textColor}; padding: 2px 6px; border-radius: 4px; font-weight: 500; font-size: 0.9em;";
+    }
+
+    private void UpdateScore(Match m, int team, object? value)
+    {
+        if (value == null || string.IsNullOrWhiteSpace(value.ToString())) return;
+        
+        if (int.TryParse(value.ToString(), out int score))
+        {
+            if (team == 1) State.UpdateMatchScore(m.Id, score, m.Score2);
+            else State.UpdateMatchScore(m.Id, m.Score1, score);
+        }
+    }
+
+    private string GetInputStyle(int? myScore, int? opponentScore)
+    {
+        string baseStyle = "width:50px; text-align:center; padding:0.5rem; border-radius:4px; border:1px solid #444; font-size:1.1rem; font-weight:bold; ";
+        
+        // Warning: Scores above 11 get amber highlight
+        if (myScore.HasValue && myScore > 11)
+        {
+            return baseStyle + "background-color: #fff8e1; color: #ff8f00; border-color: #ffc107;"; // Amber Warning
+        }
+        
+        if (myScore.HasValue && opponentScore.HasValue)
+        {
+            if (myScore > opponentScore) 
+                return baseStyle + "background-color: #e8f5e9; color: #1b5e20; border-color: #2e7d32;"; 
+            else if (myScore < opponentScore) 
+                return baseStyle + "background-color: #ffebee; color: #b71c1c; border-color: #c62828;"; 
+            else
+                return baseStyle + "background-color: rgba(0,0,0,0.2); color: white;"; 
+        }
+        
+        return baseStyle + "background-color: rgba(0,0,0,0.2); color: white;"; 
+    }
+
+    private bool IsRoundActive(string timeStr)
+    {
+        if (TimeOnly.TryParse(timeStr, out var t))
+        {
+            var now = TimeOnly.FromDateTime(DateTime.Now);
+            var end = t.AddMinutes(State.Config.Duration); 
+            return now >= t && now < end;
+        }
+        return false;
+    }
+
+    private bool HasRoundStarted(string timeStr)
+    {
+        // Check if current time is >= round start time
+        if (DateTime.TryParse(timeStr, out var startDt))
+        {
+            return DateTime.Now >= startDt;
+        }
+        if (TimeOnly.TryParse(timeStr, out var startTime))
+        {
+            var now = TimeOnly.FromDateTime(DateTime.Now);
+            return now >= startTime;
+        }
+        return true; // If parsing fails, assume started
+    }
+
+    private bool IsRoundLocked(int round)
+    {
+        // Round N is locked when ANY round > N has scores entered
+        // This ensures all previous rounds are locked when you start scoring a later round
+        var laterRoundsWithScores = State.Schedule
+            .Where(m => m.Round > round && (m.Score1.HasValue || m.Score2.HasValue))
+            .Any();
+        
+        if (laterRoundsWithScores) return true;
+        
+        // Also lock if the next round's time has started
+        var nextRoundMatches = State.Schedule.Where(m => m.Round == round + 1).ToList();
+        if (nextRoundMatches.Any())
+        {
+            var nextTimeStr = nextRoundMatches.First().Time;
+            if (DateTime.TryParse(nextTimeStr, out var nextStart))
+            {
+                return DateTime.Now >= nextStart;
+            }
+            if (TimeOnly.TryParse(nextTimeStr, out var nextStartTime))
+            {
+                var now = TimeOnly.FromDateTime(DateTime.Now);
+                return now >= nextStartTime;
+            }
+        }
+        return false;
+    }
+    
+    // Helper: Active Players Map for highlighting
+    private HashSet<string> GetActivePlayersMap()
+    {
+        var active = new HashSet<string>();
+        var roundGroups = State.Schedule.GroupBy(m => m.Round);
+        foreach(var g in roundGroups)
+        {
+            if (IsRoundActive(g.First().Time))
+            {
+                foreach(var m in g)
+                {
+                    active.Add(m.P1.Id);
+                    active.Add(m.P2.Id);
+                    active.Add(m.P3.Id);
+                    active.Add(m.P4.Id);
+                }
+            }
+        }
+        return active;
+    }
+
+    private IEnumerable<Match> GetFilteredSchedule()
+    {
+        if (string.IsNullOrWhiteSpace(State.SearchTerm)) return State.Schedule;
+        return State.Schedule.Where(m => 
+            m.P1.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase) ||
+            m.P2.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase) ||
+            m.P3.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase) ||
+            m.P4.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase)
+        );
+    }
+
+    private IEnumerable<PlayerStats> GetTopPlayers(string gender)
+    {
+        var stats = new Dictionary<string, PlayerStats>();
+
+        // Initialize players of specific gender (Filtered)
+        var players = State.Players.Where(p => string.Equals(p.Gender, gender, StringComparison.OrdinalIgnoreCase));
+        
+        // Filter: If searching, only include matching players
+        if (!string.IsNullOrWhiteSpace(State.SearchTerm))
+        {
+             players = players.Where(p => p.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase));
+        }
+
+        foreach (var p in players)
+        {
+            stats[p.Id] = new PlayerStats { PlayerId = p.Id, Name = p.Name, Points = 0, Games = 0, Wins = 0 };
+        }
+
+        // Aggregate Scores (But don't filter matches here, we want accurate total points even if viewing subset)
+        // However, if we filter the player list, we only show stats for those players.
+        foreach (var m in State.Schedule)
+        {
+            if (m.Score1.HasValue || m.Score2.HasValue)
+            {
+                int s1 = m.Score1 ?? 0;
+                int s2 = m.Score2 ?? 0;
+
+                AddStats(stats, m.P1.Id, s1);
+                AddStats(stats, m.P2.Id, s1);
+                AddStats(stats, m.P3.Id, s2);
+                AddStats(stats, m.P4.Id, s2);
+                
+                if (s1 > s2) { AddWin(stats, m.P1.Id); AddWin(stats, m.P2.Id); }
+                else if (s2 > s1) { AddWin(stats, m.P3.Id); AddWin(stats, m.P4.Id); }
+            }
+        }
+
+        return stats.Values
+            .Where(s => stats.ContainsKey(s.PlayerId)) // Ensure only our initial filtered set
+            .OrderByDescending(s => s.Points)
+            .Take(10)
+            .Select((s, index) => { s.Rank = index + 1; return s; });
+    }
+
+    // Helper: Only add if player is tracked
+    private void AddStats(Dictionary<string, PlayerStats> stats, string playerId, int points)
+    {
+        if (stats.ContainsKey(playerId)) { stats[playerId].Points += points; stats[playerId].Games++; }
+    }
+    private void AddWin(Dictionary<string, PlayerStats> stats, string playerId)
+    {
+        if (stats.ContainsKey(playerId)) { stats[playerId].Wins++; }
+    }
+
+    // ... (ActivePlayersMap same) ...
+
+    private IEnumerable<(string Name, int Total, int Played, int Remaining)> GetScheduleStats(string gender)
+    {
+        var targetPlayers = State.Players.Where(p => string.Equals(p.Gender, gender, StringComparison.OrdinalIgnoreCase));
+        if (!string.IsNullOrWhiteSpace(State.SearchTerm))
+            targetPlayers = targetPlayers.Where(p => p.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase));
+
+        var playerMap = targetPlayers.ToDictionary(p => p.Id, p => p.Name);
+        var stats = playerMap.Keys.ToDictionary(k => k, k => (Total: 0, Played: 0));
+
+        foreach(var m in State.Schedule)
+        {
+            void AddStat(string pid)
+            {
+                if (!stats.ContainsKey(pid)) return; 
+                var current = stats[pid];
+                current.Total++;
+                if (m.Score1.HasValue || m.Score2.HasValue) current.Played++;
+                stats[pid] = current;
+            }
+
+            AddStat(m.P1.Id); AddStat(m.P2.Id); AddStat(m.P3.Id); AddStat(m.P4.Id);
+        }
+
+        return stats.Select(k => (Name: playerMap[k.Key], Total: k.Value.Total, Played: k.Value.Played, Remaining: k.Value.Total - k.Value.Played))
+        .OrderByDescending(x => x.Total)
+        .ThenByDescending(x => x.Played)
+        .ThenBy(x => x.Name);
+    }
+
+    // Helper: Get current round (first round with any unscored matches)
+    private IGrouping<int, Match>? GetCurrentRound()
+    {
+        return State.Schedule
+            .GroupBy(m => m.Round)
+            .OrderBy(g => g.Key)
+            .FirstOrDefault(g => g.Any(m => !m.Score1.HasValue || !m.Score2.HasValue));
+    }
+    
+    // Helper: Get next round (the round after current)
+    private IGrouping<int, Match>? GetNextRound()
+    {
+        var current = GetCurrentRound();
+        if (current == null) return null;
+        
+        return State.Schedule
+            .GroupBy(m => m.Round)
+            .OrderBy(g => g.Key)
+            .FirstOrDefault(g => g.Key > current.Key);
+    }
+
+    private class PlayerStats
+    {
+        public int Rank { get; set; }
+        public string PlayerId { get; set; } = "";
+        public string Name { get; set; } = "";
+        public int Points { get; set; }
+        public int Games { get; set; }
+        public int Wins { get; set; }
+    }
+}

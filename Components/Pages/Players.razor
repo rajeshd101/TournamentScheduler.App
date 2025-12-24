@@ -1,0 +1,383 @@
+
+@page "/players"
+@inject TournamentState State
+@inject IJSRuntime JS
+@implements IDisposable
+
+<div class="view-section active">
+    <div class="card glass-panel">
+        <div class="section-header">
+            <h1>Player Management</h1>
+        </div>
+        <div class="add-player-form" style="display:flex; gap:1rem; margin-bottom:1rem;">
+            <input @bind="NewName" placeholder="Player Name" style="flex:1;" />
+            <select @bind="NewGender">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+            <select @bind="NewSkill">
+                <option value="1">Skill: 1 (Novice)</option>
+                <option value="2">Skill: 2</option>
+                <option value="3">Skill: 3 (Intermediate)</option>
+                <option value="4">Skill: 4</option>
+                <option value="5">Skill: 5 (Expert)</option>
+            </select>
+            <button class="btn @(EditingId != null ? "accent" : "")" @onclick="AddOrUpdatePlayer">
+                @(EditingId != null ? "Update" : "Add")
+            </button>
+            @if (EditingId != null)
+            {
+                <button class="btn secondary" @onclick="CancelEdit">Cancel</button>
+            }
+        </div>
+        
+        <!-- CSV Import/Export Row -->
+        <div style="display:flex; gap:1rem; margin-bottom:1rem; flex-wrap:wrap; align-items:center;">
+            <button class="btn secondary" @onclick="DownloadCsvTemplate" title="Download CSV template">
+                📥 Download Template
+            </button>
+            <label class="btn secondary" style="cursor:pointer; margin:0;">
+                📤 Import CSV
+                <InputFile OnChange="HandleCsvUpload" accept=".csv" style="display:none;" />
+            </label>
+            @if (!string.IsNullOrEmpty(CsvMessage))
+            {
+                <span style="color: @(CsvMessage.StartsWith("Error") ? "#ef4444" : "#10b981"); font-size:0.9rem;">@CsvMessage</span>
+            }
+        </div>
+
+        <style>
+            .player-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .player-card {
+                background: var(--bg-input); /* Slight transparency */
+                border: 1px solid var(--border);
+                border-radius: var(--radius-md);
+                padding: 1rem;
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                transition: all 0.2s;
+                position: relative;
+            }
+
+            .player-card:hover {
+                transform: translateY(-2px);
+                border-color: var(--primary);
+                box-shadow: var(--shadow-sm);
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            .player-card.editing {
+                border-color: var(--accent);
+                background: rgba(139, 92, 246, 0.1);
+                box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+            }
+
+            .card-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+            }
+
+            .player-avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: bold;
+                font-size: 1.1rem;
+                color: #fff;
+                text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+                border: 2px solid rgba(255,255,255,0.2);
+            }
+        </style>
+
+        <div class="player-list-container">
+            @if (State.Players.Count == 0)
+            {
+               <div style="text-align:center; padding:3rem; color:var(--text-muted); border: 2px dashed var(--border); border-radius:var(--radius-lg);">
+                   No players here yet. Add one above or use Bulk Add.
+               </div>
+            }
+            else
+            {
+                <div class="player-grid">
+                    @foreach (var p in GetFilteredPlayers())
+                    {
+                        <div class="player-card @(EditingId == p.Id ? "editing" : "")">
+                            @if (EditingId == p.Id)
+                            {
+                                <!-- EDIT MODE -->
+                                <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                                    <label style="font-size:0.75rem; color:var(--text-muted);">Editing Player</label>
+                                    <input type="text" @bind="EditName" placeholder="Name" class="form-control" />
+                                    
+                                    <div style="display:flex; gap:0.5rem;">
+                                        <select @bind="EditGender" style="flex:1;">
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                        </select>
+                                        <select @bind="EditSkill" style="flex:1;">
+                                            <option value="1">1 (Novice)</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3 (Avg)</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5 (Pro)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div style="display:flex; gap:0.5rem; align-items:center;">
+                                        <input type="color" @bind="EditColor" style="width:100%; height:32px; padding:0; border:none; cursor:pointer;" title="Choose Color" />
+                                    </div>
+
+                                    <div style="display:flex; gap:0.5rem; margin-top:0.5rem;">
+                                        <button class="btn primary" style="flex:1;" @onclick="() => SaveInline(p.Id)">Save</button>
+                                        <button class="btn secondary" style="flex:1;" @onclick="CancelEdit">Cancel</button>
+                                    </div>
+                                    @if (!string.IsNullOrEmpty(InlineError))
+                                    {
+                                        <div style="color:var(--danger); font-size:0.8rem; text-align:center;">@InlineError</div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <!-- VIEW MODE -->
+                                <div class="card-header">
+                                    <div style="display:flex; gap:0.75rem; align-items:center;">
+                                        <div class="player-avatar" style="background-color: @p.Color">
+                                            @p.Name.Substring(0, Math.Min(1, p.Name.Length)).ToUpper()
+                                        </div>
+                                        <div>
+                                            <div style="font-weight:600; font-size:1.1rem;">@p.Name</div>
+                                            <div style="font-size:0.8rem; color:var(--text-muted);">
+                                                Registered @p.RegistrationTime.ToString("HH:mm")
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="badge" style="background: @(p.Gender=="F"?"rgba(233, 30, 99, 0.2)":"rgba(33, 150, 243, 0.2)"); color: @(p.Gender=="F"?"#f48fb1":"#90caf9"); padding: 4px 8px; border-radius: 8px; font-size: 0.8rem; font-weight:600;">
+                                        @p.Gender • Lv.@p.Skill
+                                    </span>
+                                </div>
+
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:0.5rem; border-top:1px solid rgba(255,255,255,0.05); padding-top:0.75rem;">
+                                    <label style="display:flex; align-items:center; gap:0.5rem; cursor:pointer; font-size:0.85rem; color:var(--text-muted);">
+                                        <input type="checkbox" checked="@p.IsOut" @onchange="@(e => ToggleOut(p, e.Value))" style="width:16px; height:16px;" />
+                                        <span>@(p.IsOut ? "Out/Away" : "Active")</span>
+                                    </label>
+                                    
+                                    <div style="display:flex; gap:0.5rem;">
+                                        <button class="btn secondary" style="padding:0.3rem 0.6rem; font-size:0.8rem;" @onclick="() => StartInlineEdit(p)">Edit</button>
+                                        <button class="btn secondary" style="padding:0.3rem 0.6rem; font-size:0.8rem; color:var(--danger); border-color:rgba(239, 68, 68, 0.3);" @onclick="() => State.RemovePlayer(p.Id)">✕</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+
+        <div class="bulk-actions">
+            <textarea @bind="BulkText" placeholder="Paste names here (one per line) to bulk add..." rows="3"></textarea>
+            <button class="btn secondary" @onclick="BulkAdd">Bulk Add</button>
+            <button class="btn accent" style="margin-left:auto" @onclick="AutoFill">Auto-Fill Remaining</button>
+        </div>
+    </div>
+</div>
+
+@inject SchedulerService Scheduler
+
+@code {
+    private string NewName = "";
+    private string NewGender = "M";
+    private int NewSkill = 3;
+    private string BulkText = "";
+    private string CsvMessage = ""; // Feedback for CSV import
+    
+    // Inline Edit State
+    private string? EditingId = null;
+    private string EditName = "";
+    private string EditGender = "";
+    private string EditColor = "";
+    private DateTime EditTime;
+    private int EditSkill = 3;
+    private string InlineError = "";
+
+    protected override void OnInitialized()
+    {
+        State.OnChange += StateHasChanged;
+        State.OnSearchChanged += StateHasChanged;
+    }
+
+    private IEnumerable<Player> GetFilteredPlayers()
+    {
+        if (string.IsNullOrWhiteSpace(State.SearchTerm)) return State.Players;
+        return State.Players.Where(p => p.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase));
+    }
+    
+    private void ToggleOut(Player p, object? value)
+    {
+        if (value is bool isOut)
+        {
+            p.IsOut = isOut;
+            State.NotifyStateChanged(); 
+
+            // Safe Logic: Smart Regeneration
+            if (State.Schedule.Any())
+            {
+                 // Regenerate preserving history
+                 State.RegenerateSchedule(Scheduler);
+            }
+        }
+    }
+
+    private void AddOrUpdatePlayer()
+    {
+        if (string.IsNullOrWhiteSpace(NewName)) return;
+        // Normal Add
+        State.AddPlayer(NewName, NewGender, NewSkill);
+        NewName = "";
+        NewGender = "M";
+        NewSkill = 3;
+    }
+
+    private void StartInlineEdit(Player p)
+    {
+        EditingId = p.Id;
+        EditName = p.Name;
+        EditGender = p.Gender;
+        EditColor = p.Color; 
+        EditTime = p.RegistrationTime;
+        EditSkill = p.Skill;
+        InlineError = "";
+    }
+
+    private void SaveInline(string id)
+    {
+        if (string.IsNullOrWhiteSpace(EditName)) 
+        {
+            InlineError = "Name cannot be empty.";
+            return;
+        }
+
+        // Check Color Uniqueness (exclude current player)
+        if (State.Players.Any(p => p.Id != id && p.Color.Equals(EditColor, StringComparison.OrdinalIgnoreCase)))
+        {
+            InlineError = "This color is already taken by another player.";
+            return;
+        }
+
+        // Perform Update
+        var p = State.Players.FirstOrDefault(x => x.Id == id);
+        if (p != null)
+        {
+            // Force State Update
+            State.UpdatePlayerDetails(id, EditName, EditGender, EditColor, EditTime, EditSkill);
+        }
+        
+        CancelEdit();
+    }
+
+    private void CancelEdit()
+    {
+        EditingId = null;
+        EditName = "";
+        EditGender = "M";
+        EditColor = "";
+        InlineError = "";
+    }
+
+    private void BulkAdd()
+    {
+        if (string.IsNullOrWhiteSpace(BulkText)) return;
+        var lines = BulkText.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        // Format assumption: "Name" (default M) OR "Name, F"
+        foreach (var line in lines)
+        {
+            var parts = line.Split(',');
+            var name = parts[0].Trim();
+            var gender = parts.Length > 1 ? parts[1].Trim().ToUpper() : "M";
+            State.AddPlayer(name, gender, 3);
+        }
+        BulkText = "";
+    }
+
+    private void AutoFill()
+    {
+        int current = State.Players.Count;
+        int target = State.Config.NumPlayers;
+        for (int i = current + 1; i <= target; i++)
+        {
+            string g = i % 2 == 0 ? "F" : "M";
+            State.AddPlayer($"Player {i}", g, 3);
+        }
+    }
+
+    public void Dispose()
+    {
+        State.OnChange -= StateHasChanged;
+    }
+
+    private async Task DownloadCsvTemplate()
+    {
+        var template = "Name,Gender,Skill\nJohn Doe,M,3\nJane Smith,F,4";
+        var bytes = System.Text.Encoding.UTF8.GetBytes(template);
+        var base64 = Convert.ToBase64String(bytes);
+        await JS.InvokeVoidAsync("downloadFile", "player_template.csv", base64);
+        CsvMessage = "Template downloaded!";
+    }
+
+    private async Task HandleCsvUpload(InputFileChangeEventArgs e)
+    {
+        CsvMessage = "";
+        try
+        {
+            var file = e.File;
+            if (file.Size > 1024 * 1024) // 1MB limit
+            {
+                CsvMessage = "Error: File too large (max 1MB)";
+                return;
+            }
+
+            using var reader = new System.IO.StreamReader(file.OpenReadStream());
+            var content = await reader.ReadToEndAsync();
+            var lines = content.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+            
+            int imported = 0;
+            bool isHeader = true;
+            foreach (var line in lines)
+            {
+                if (isHeader) { isHeader = false; continue; } // Skip header row
+                
+                var parts = line.Split(',');
+                if (parts.Length < 2) continue;
+                
+                var name = parts[0].Trim().Trim('"');
+                var gender = parts[1].Trim().Trim('"').ToUpper();
+                var skill = parts.Length > 2 && int.TryParse(parts[2].Trim(), out var s) ? Math.Clamp(s, 1, 5) : 3;
+                
+                if (string.IsNullOrWhiteSpace(name)) continue;
+                if (gender != "M" && gender != "F") gender = "M";
+                
+                State.AddPlayer(name, gender, skill);
+                imported++;
+            }
+            
+            CsvMessage = $"Successfully imported {imported} players!";
+        }
+        catch (Exception ex)
+        {
+            CsvMessage = $"Error: {ex.Message}";
+        }
+    }
+}

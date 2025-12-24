@@ -1,0 +1,3148 @@
+{
+  "Players": [
+    {
+      "Id": "9eac09",
+      "Name": "Man 1",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#D7AA96",
+      "RegistrationTime": "2025-12-21T00:16:49.963629-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "dc3f3c",
+      "Name": "Man 2",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#CA9DB5",
+      "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "471e22",
+      "Name": "Man 3",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#D0CFBD",
+      "RegistrationTime": "2025-12-21T00:16:49.9786681-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "41987a",
+      "Name": "Man 4",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#FCF3B0",
+      "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "12a97d",
+      "Name": "Man 5",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#A8C7F8",
+      "RegistrationTime": "2025-12-21T00:16:49.9862459-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "498da7",
+      "Name": "Man 6",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#9DA6DB",
+      "RegistrationTime": "2025-12-21T00:16:49.9868254-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "2aa218",
+      "Name": "Man 7",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#D6F6FD",
+      "RegistrationTime": "2025-12-21T00:16:49.9913051-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "f2984b",
+      "Name": "Man 8",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#DD9ADC",
+      "RegistrationTime": "2025-12-21T00:16:49.9959142-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "c84562",
+      "Name": "Man 9",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#BBE5FC",
+      "RegistrationTime": "2025-12-21T00:16:50.0010426-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "47e1a1",
+      "Name": "Man 10",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#A79FBB",
+      "RegistrationTime": "2025-12-21T00:16:50.0051956-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "4b219f",
+      "Name": "Man 11",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#ADBAD4",
+      "RegistrationTime": "2025-12-21T00:16:50.0095887-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "89ae34",
+      "Name": "Man 12",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#E8CDF0",
+      "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "5c7e32",
+      "Name": "Man 13",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#DFA1A4",
+      "RegistrationTime": "2025-12-21T00:16:50.0203856-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "161f3b",
+      "Name": "Man 14",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#C2F4F6",
+      "RegistrationTime": "2025-12-21T00:16:50.0249459-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "a2a639",
+      "Name": "Man 15",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#FAEED4",
+      "RegistrationTime": "2025-12-21T00:16:50.0297708-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "a16519",
+      "Name": "Man 16",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#BEC5DF",
+      "RegistrationTime": "2025-12-21T00:16:50.0348807-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "b6e5a4",
+      "Name": "Woman 11",
+      "Skill": 3,
+      "Gender": "F",
+      "Color": "#C8E7DB",
+      "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "679083",
+      "Name": "Woman 12",
+      "Skill": 3,
+      "Gender": "F",
+      "Color": "#E2EAF8",
+      "RegistrationTime": "2025-12-21T00:16:50.0713839-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "e3eeef",
+      "Name": "Woman 13",
+      "Skill": 3,
+      "Gender": "F",
+      "Color": "#A7D7F1",
+      "RegistrationTime": "2025-12-21T00:16:50.076367-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "554bea",
+      "Name": "Woman 14",
+      "Skill": 3,
+      "Gender": "F",
+      "Color": "#ACF7B1",
+      "RegistrationTime": "2025-12-21T00:16:50.0809052-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "6e2c5e",
+      "Name": "Woman 15",
+      "Skill": 3,
+      "Gender": "F",
+      "Color": "#9EA596",
+      "RegistrationTime": "2025-12-21T00:16:50.0859252-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "16d0e1",
+      "Name": "Woman 16",
+      "Skill": 3,
+      "Gender": "F",
+      "Color": "#AED2F6",
+      "RegistrationTime": "2025-12-21T00:16:50.0903148-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "349dd1",
+      "Name": "Woman 17",
+      "Skill": 3,
+      "Gender": "F",
+      "Color": "#CFFDBA",
+      "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "f4b5b9",
+      "Name": "Woman 18",
+      "Skill": 3,
+      "Gender": "F",
+      "Color": "#9ED4E7",
+      "RegistrationTime": "2025-12-21T00:16:50.1002525-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "80395c",
+      "Name": "Woman 19",
+      "Skill": 3,
+      "Gender": "F",
+      "Color": "#C8BE98",
+      "RegistrationTime": "2025-12-21T00:16:50.1008332-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "2ba5f6",
+      "Name": "Woman 20",
+      "Skill": 3,
+      "Gender": "F",
+      "Color": "#D1CFE1",
+      "RegistrationTime": "2025-12-21T00:16:50.1054917-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "ffaf2e",
+      "Name": "John Doe",
+      "Skill": 3,
+      "Gender": "M",
+      "Color": "#AEB8C8",
+      "RegistrationTime": "2025-12-21T01:24:16.5393519-07:00",
+      "IsOut": false
+    },
+    {
+      "Id": "f1234d",
+      "Name": "Jane Smith",
+      "Skill": 4,
+      "Gender": "F",
+      "Color": "#F5979F",
+      "RegistrationTime": "2025-12-21T01:24:16.5445274-07:00",
+      "IsOut": false
+    }
+  ],
+  "Config": {
+    "NumPlayers": 40,
+    "Courts": 4,
+    "Duration": 12,
+    "BreakTime": 1,
+    "StartTime": "2025-12-21T18:00:00-07:00",
+    "EndTime": "2025-12-21T21:30:00-07:00",
+    "Mode": "complete",
+    "GenderRule": "Doubles"
+  },
+  "Schedule": [
+    {
+      "Id": "61c9baab-8261-47f2-a8ac-fe44bedd7a6a",
+      "P1": {
+        "Id": "9eac09",
+        "Name": "Man 1",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D7AA96",
+        "RegistrationTime": "2025-12-21T00:16:49.963629-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "c84562",
+        "Name": "Man 9",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BBE5FC",
+        "RegistrationTime": "2025-12-21T00:16:50.0010426-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "dc3f3c",
+        "Name": "Man 2",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#CA9DB5",
+        "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "89ae34",
+        "Name": "Man 12",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#E8CDF0",
+        "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+        "IsOut": false
+      },
+      "Round": 1,
+      "Court": 1,
+      "Time": "2025-12-21 18:00",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "d30a120f-a0f2-473e-9d12-421fd30e0883",
+      "P1": {
+        "Id": "471e22",
+        "Name": "Man 3",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D0CFBD",
+        "RegistrationTime": "2025-12-21T00:16:49.9786681-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "f2984b",
+        "Name": "Man 8",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DD9ADC",
+        "RegistrationTime": "2025-12-21T00:16:49.9959142-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "41987a",
+        "Name": "Man 4",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FCF3B0",
+        "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "ffaf2e",
+        "Name": "John Doe",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#AEB8C8",
+        "RegistrationTime": "2025-12-21T01:24:16.5393519-07:00",
+        "IsOut": false
+      },
+      "Round": 1,
+      "Court": 2,
+      "Time": "2025-12-21 18:00",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "9268ade8-cb27-4756-a634-a369a89ea758",
+      "P1": {
+        "Id": "498da7",
+        "Name": "Man 6",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#9DA6DB",
+        "RegistrationTime": "2025-12-21T00:16:49.9868254-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "4b219f",
+        "Name": "Man 11",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#ADBAD4",
+        "RegistrationTime": "2025-12-21T00:16:50.0095887-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "161f3b",
+        "Name": "Man 14",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#C2F4F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0249459-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "a2a639",
+        "Name": "Man 15",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FAEED4",
+        "RegistrationTime": "2025-12-21T00:16:50.0297708-07:00",
+        "IsOut": false
+      },
+      "Round": 1,
+      "Court": 3,
+      "Time": "2025-12-21 18:00",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "4f95b1ad-6571-4e89-9f78-ffe888ffa990",
+      "P1": {
+        "Id": "47e1a1",
+        "Name": "Man 10",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A79FBB",
+        "RegistrationTime": "2025-12-21T00:16:50.0051956-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "a16519",
+        "Name": "Man 16",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BEC5DF",
+        "RegistrationTime": "2025-12-21T00:16:50.0348807-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "12a97d",
+        "Name": "Man 5",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A8C7F8",
+        "RegistrationTime": "2025-12-21T00:16:49.9862459-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "2aa218",
+        "Name": "Man 7",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D6F6FD",
+        "RegistrationTime": "2025-12-21T00:16:49.9913051-07:00",
+        "IsOut": false
+      },
+      "Round": 1,
+      "Court": 4,
+      "Time": "2025-12-21 18:00",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "4c894854-2d16-416a-b23e-71bd40e9b4ea",
+      "P1": {
+        "Id": "b6e5a4",
+        "Name": "Woman 11",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8E7DB",
+        "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "16d0e1",
+        "Name": "Woman 16",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#AED2F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0903148-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "80395c",
+        "Name": "Woman 19",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8BE98",
+        "RegistrationTime": "2025-12-21T00:16:50.1008332-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "2ba5f6",
+        "Name": "Woman 20",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#D1CFE1",
+        "RegistrationTime": "2025-12-21T00:16:50.1054917-07:00",
+        "IsOut": false
+      },
+      "Round": 2,
+      "Court": 1,
+      "Time": "2025-12-21 18:13",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "c12d1bcc-f8ad-448d-b1c9-64bf9e13a4df",
+      "P1": {
+        "Id": "e3eeef",
+        "Name": "Woman 13",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#A7D7F1",
+        "RegistrationTime": "2025-12-21T00:16:50.076367-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "6e2c5e",
+        "Name": "Woman 15",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9EA596",
+        "RegistrationTime": "2025-12-21T00:16:50.0859252-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "679083",
+        "Name": "Woman 12",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#E2EAF8",
+        "RegistrationTime": "2025-12-21T00:16:50.0713839-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "554bea",
+        "Name": "Woman 14",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#ACF7B1",
+        "RegistrationTime": "2025-12-21T00:16:50.0809052-07:00",
+        "IsOut": false
+      },
+      "Round": 2,
+      "Court": 2,
+      "Time": "2025-12-21 18:13",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "7ff25ae2-fb65-4f34-8cdd-1d8b3e5c4d9d",
+      "P1": {
+        "Id": "9eac09",
+        "Name": "Man 1",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D7AA96",
+        "RegistrationTime": "2025-12-21T00:16:49.963629-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "5c7e32",
+        "Name": "Man 13",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DFA1A4",
+        "RegistrationTime": "2025-12-21T00:16:50.0203856-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "12a97d",
+        "Name": "Man 5",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A8C7F8",
+        "RegistrationTime": "2025-12-21T00:16:49.9862459-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f2984b",
+        "Name": "Man 8",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DD9ADC",
+        "RegistrationTime": "2025-12-21T00:16:49.9959142-07:00",
+        "IsOut": false
+      },
+      "Round": 2,
+      "Court": 3,
+      "Time": "2025-12-21 18:13",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "762f4998-de68-46c2-bd9b-42b0d7e2367c",
+      "P1": {
+        "Id": "dc3f3c",
+        "Name": "Man 2",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#CA9DB5",
+        "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "498da7",
+        "Name": "Man 6",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#9DA6DB",
+        "RegistrationTime": "2025-12-21T00:16:49.9868254-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "89ae34",
+        "Name": "Man 12",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#E8CDF0",
+        "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "ffaf2e",
+        "Name": "John Doe",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#AEB8C8",
+        "RegistrationTime": "2025-12-21T01:24:16.5393519-07:00",
+        "IsOut": false
+      },
+      "Round": 2,
+      "Court": 4,
+      "Time": "2025-12-21 18:13",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "b1892fd9-bc6b-4632-816e-337e1ca5eaa6",
+      "P1": {
+        "Id": "554bea",
+        "Name": "Woman 14",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#ACF7B1",
+        "RegistrationTime": "2025-12-21T00:16:50.0809052-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "f4b5b9",
+        "Name": "Woman 18",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9ED4E7",
+        "RegistrationTime": "2025-12-21T00:16:50.1002525-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "349dd1",
+        "Name": "Woman 17",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#CFFDBA",
+        "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f1234d",
+        "Name": "Jane Smith",
+        "Skill": 4,
+        "Gender": "F",
+        "Color": "#F5979F",
+        "RegistrationTime": "2025-12-21T01:24:16.5445274-07:00",
+        "IsOut": false
+      },
+      "Round": 3,
+      "Court": 1,
+      "Time": "2025-12-21 18:26",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "d8795863-cc61-4684-88c3-a81915ccf5cc",
+      "P1": {
+        "Id": "41987a",
+        "Name": "Man 4",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FCF3B0",
+        "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "4b219f",
+        "Name": "Man 11",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#ADBAD4",
+        "RegistrationTime": "2025-12-21T00:16:50.0095887-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "2aa218",
+        "Name": "Man 7",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D6F6FD",
+        "RegistrationTime": "2025-12-21T00:16:49.9913051-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "47e1a1",
+        "Name": "Man 10",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A79FBB",
+        "RegistrationTime": "2025-12-21T00:16:50.0051956-07:00",
+        "IsOut": false
+      },
+      "Round": 3,
+      "Court": 2,
+      "Time": "2025-12-21 18:26",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "4b47e8a1-8b72-445d-b64e-7508d14dd499",
+      "P1": {
+        "Id": "e3eeef",
+        "Name": "Woman 13",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#A7D7F1",
+        "RegistrationTime": "2025-12-21T00:16:50.076367-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "16d0e1",
+        "Name": "Woman 16",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#AED2F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0903148-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "6e2c5e",
+        "Name": "Woman 15",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9EA596",
+        "RegistrationTime": "2025-12-21T00:16:50.0859252-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "2ba5f6",
+        "Name": "Woman 20",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#D1CFE1",
+        "RegistrationTime": "2025-12-21T00:16:50.1054917-07:00",
+        "IsOut": false
+      },
+      "Round": 3,
+      "Court": 3,
+      "Time": "2025-12-21 18:26",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "496a4522-8bdc-4813-bbb7-9839ca62efb1",
+      "P1": {
+        "Id": "161f3b",
+        "Name": "Man 14",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#C2F4F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0249459-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "a16519",
+        "Name": "Man 16",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BEC5DF",
+        "RegistrationTime": "2025-12-21T00:16:50.0348807-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "471e22",
+        "Name": "Man 3",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D0CFBD",
+        "RegistrationTime": "2025-12-21T00:16:49.9786681-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "c84562",
+        "Name": "Man 9",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BBE5FC",
+        "RegistrationTime": "2025-12-21T00:16:50.0010426-07:00",
+        "IsOut": false
+      },
+      "Round": 3,
+      "Court": 4,
+      "Time": "2025-12-21 18:26",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "05098930-8600-465a-b6de-6e0b4c1a891d",
+      "P1": {
+        "Id": "498da7",
+        "Name": "Man 6",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#9DA6DB",
+        "RegistrationTime": "2025-12-21T00:16:49.9868254-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "ffaf2e",
+        "Name": "John Doe",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#AEB8C8",
+        "RegistrationTime": "2025-12-21T01:24:16.5393519-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "89ae34",
+        "Name": "Man 12",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#E8CDF0",
+        "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "5c7e32",
+        "Name": "Man 13",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DFA1A4",
+        "RegistrationTime": "2025-12-21T00:16:50.0203856-07:00",
+        "IsOut": false
+      },
+      "Round": 4,
+      "Court": 1,
+      "Time": "2025-12-21 18:39",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "6a40e766-993b-4cda-86dc-7dac1405a54f",
+      "P1": {
+        "Id": "9eac09",
+        "Name": "Man 1",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D7AA96",
+        "RegistrationTime": "2025-12-21T00:16:49.963629-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "161f3b",
+        "Name": "Man 14",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#C2F4F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0249459-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "a2a639",
+        "Name": "Man 15",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FAEED4",
+        "RegistrationTime": "2025-12-21T00:16:50.0297708-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "a16519",
+        "Name": "Man 16",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BEC5DF",
+        "RegistrationTime": "2025-12-21T00:16:50.0348807-07:00",
+        "IsOut": false
+      },
+      "Round": 4,
+      "Court": 2,
+      "Time": "2025-12-21 18:39",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "fd6e63ad-0925-40cd-ba44-d13d16bd5796",
+      "P1": {
+        "Id": "679083",
+        "Name": "Woman 12",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#E2EAF8",
+        "RegistrationTime": "2025-12-21T00:16:50.0713839-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "80395c",
+        "Name": "Woman 19",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8BE98",
+        "RegistrationTime": "2025-12-21T00:16:50.1008332-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "f4b5b9",
+        "Name": "Woman 18",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9ED4E7",
+        "RegistrationTime": "2025-12-21T00:16:50.1002525-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "2ba5f6",
+        "Name": "Woman 20",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#D1CFE1",
+        "RegistrationTime": "2025-12-21T00:16:50.1054917-07:00",
+        "IsOut": false
+      },
+      "Round": 4,
+      "Court": 3,
+      "Time": "2025-12-21 18:39",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "0de222bd-ecc1-4057-8ec6-edb5e8158672",
+      "P1": {
+        "Id": "554bea",
+        "Name": "Woman 14",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#ACF7B1",
+        "RegistrationTime": "2025-12-21T00:16:50.0809052-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "349dd1",
+        "Name": "Woman 17",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#CFFDBA",
+        "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "b6e5a4",
+        "Name": "Woman 11",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8E7DB",
+        "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "6e2c5e",
+        "Name": "Woman 15",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9EA596",
+        "RegistrationTime": "2025-12-21T00:16:50.0859252-07:00",
+        "IsOut": false
+      },
+      "Round": 4,
+      "Court": 4,
+      "Time": "2025-12-21 18:39",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "0a052771-2466-4c01-bf8e-f72d2765cbd2",
+      "P1": {
+        "Id": "dc3f3c",
+        "Name": "Man 2",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#CA9DB5",
+        "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "471e22",
+        "Name": "Man 3",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D0CFBD",
+        "RegistrationTime": "2025-12-21T00:16:49.9786681-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "41987a",
+        "Name": "Man 4",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FCF3B0",
+        "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f2984b",
+        "Name": "Man 8",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DD9ADC",
+        "RegistrationTime": "2025-12-21T00:16:49.9959142-07:00",
+        "IsOut": false
+      },
+      "Round": 5,
+      "Court": 1,
+      "Time": "2025-12-21 18:52",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "5ad5bcb0-c707-4663-b772-50b9a01675c0",
+      "P1": {
+        "Id": "b6e5a4",
+        "Name": "Woman 11",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8E7DB",
+        "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "80395c",
+        "Name": "Woman 19",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8BE98",
+        "RegistrationTime": "2025-12-21T00:16:50.1008332-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "e3eeef",
+        "Name": "Woman 13",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#A7D7F1",
+        "RegistrationTime": "2025-12-21T00:16:50.076367-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f1234d",
+        "Name": "Jane Smith",
+        "Skill": 4,
+        "Gender": "F",
+        "Color": "#F5979F",
+        "RegistrationTime": "2025-12-21T01:24:16.5445274-07:00",
+        "IsOut": false
+      },
+      "Round": 5,
+      "Court": 2,
+      "Time": "2025-12-21 18:52",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "dbd8e6be-fa44-481b-9544-9f0666eab913",
+      "P1": {
+        "Id": "47e1a1",
+        "Name": "Man 10",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A79FBB",
+        "RegistrationTime": "2025-12-21T00:16:50.0051956-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "4b219f",
+        "Name": "Man 11",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#ADBAD4",
+        "RegistrationTime": "2025-12-21T00:16:50.0095887-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "12a97d",
+        "Name": "Man 5",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A8C7F8",
+        "RegistrationTime": "2025-12-21T00:16:49.9862459-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "c84562",
+        "Name": "Man 9",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BBE5FC",
+        "RegistrationTime": "2025-12-21T00:16:50.0010426-07:00",
+        "IsOut": false
+      },
+      "Round": 5,
+      "Court": 3,
+      "Time": "2025-12-21 18:52",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "578ce633-24c6-44c0-a41d-d96bb070372e",
+      "P1": {
+        "Id": "5c7e32",
+        "Name": "Man 13",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DFA1A4",
+        "RegistrationTime": "2025-12-21T00:16:50.0203856-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "a16519",
+        "Name": "Man 16",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BEC5DF",
+        "RegistrationTime": "2025-12-21T00:16:50.0348807-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "498da7",
+        "Name": "Man 6",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#9DA6DB",
+        "RegistrationTime": "2025-12-21T00:16:49.9868254-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "2aa218",
+        "Name": "Man 7",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D6F6FD",
+        "RegistrationTime": "2025-12-21T00:16:49.9913051-07:00",
+        "IsOut": false
+      },
+      "Round": 5,
+      "Court": 4,
+      "Time": "2025-12-21 18:52",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "219c3a57-e284-4f49-8c31-f0ed1d2bc169",
+      "P1": {
+        "Id": "471e22",
+        "Name": "Man 3",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D0CFBD",
+        "RegistrationTime": "2025-12-21T00:16:49.9786681-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "47e1a1",
+        "Name": "Man 10",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A79FBB",
+        "RegistrationTime": "2025-12-21T00:16:50.0051956-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "5c7e32",
+        "Name": "Man 13",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DFA1A4",
+        "RegistrationTime": "2025-12-21T00:16:50.0203856-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "161f3b",
+        "Name": "Man 14",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#C2F4F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0249459-07:00",
+        "IsOut": false
+      },
+      "Round": 6,
+      "Court": 1,
+      "Time": "2025-12-21 19:05",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "155ee13b-b93e-4a3b-9499-13fcb2fadf0e",
+      "P1": {
+        "Id": "554bea",
+        "Name": "Woman 14",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#ACF7B1",
+        "RegistrationTime": "2025-12-21T00:16:50.0809052-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "6e2c5e",
+        "Name": "Woman 15",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9EA596",
+        "RegistrationTime": "2025-12-21T00:16:50.0859252-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "349dd1",
+        "Name": "Woman 17",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#CFFDBA",
+        "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f4b5b9",
+        "Name": "Woman 18",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9ED4E7",
+        "RegistrationTime": "2025-12-21T00:16:50.1002525-07:00",
+        "IsOut": false
+      },
+      "Round": 6,
+      "Court": 2,
+      "Time": "2025-12-21 19:05",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "8fce11e8-2ce4-423d-a522-20282bdf3097",
+      "P1": {
+        "Id": "b6e5a4",
+        "Name": "Woman 11",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8E7DB",
+        "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "679083",
+        "Name": "Woman 12",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#E2EAF8",
+        "RegistrationTime": "2025-12-21T00:16:50.0713839-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "16d0e1",
+        "Name": "Woman 16",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#AED2F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0903148-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f1234d",
+        "Name": "Jane Smith",
+        "Skill": 4,
+        "Gender": "F",
+        "Color": "#F5979F",
+        "RegistrationTime": "2025-12-21T01:24:16.5445274-07:00",
+        "IsOut": false
+      },
+      "Round": 6,
+      "Court": 3,
+      "Time": "2025-12-21 19:05",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "1acdcca7-203a-497b-8bf1-942b3facf57b",
+      "P1": {
+        "Id": "9eac09",
+        "Name": "Man 1",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D7AA96",
+        "RegistrationTime": "2025-12-21T00:16:49.963629-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "a2a639",
+        "Name": "Man 15",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FAEED4",
+        "RegistrationTime": "2025-12-21T00:16:50.0297708-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "f2984b",
+        "Name": "Man 8",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DD9ADC",
+        "RegistrationTime": "2025-12-21T00:16:49.9959142-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "c84562",
+        "Name": "Man 9",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BBE5FC",
+        "RegistrationTime": "2025-12-21T00:16:50.0010426-07:00",
+        "IsOut": false
+      },
+      "Round": 6,
+      "Court": 4,
+      "Time": "2025-12-21 19:05",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "1dc03a07-1ec4-46b7-8f76-cc9196480349",
+      "P1": {
+        "Id": "12a97d",
+        "Name": "Man 5",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A8C7F8",
+        "RegistrationTime": "2025-12-21T00:16:49.9862459-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "ffaf2e",
+        "Name": "John Doe",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#AEB8C8",
+        "RegistrationTime": "2025-12-21T01:24:16.5393519-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "dc3f3c",
+        "Name": "Man 2",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#CA9DB5",
+        "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "2aa218",
+        "Name": "Man 7",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D6F6FD",
+        "RegistrationTime": "2025-12-21T00:16:49.9913051-07:00",
+        "IsOut": false
+      },
+      "Round": 7,
+      "Court": 1,
+      "Time": "2025-12-21 19:18",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "5d6a304b-427c-4ba5-b706-526b73dbf7c2",
+      "P1": {
+        "Id": "471e22",
+        "Name": "Man 3",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D0CFBD",
+        "RegistrationTime": "2025-12-21T00:16:49.9786681-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "498da7",
+        "Name": "Man 6",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#9DA6DB",
+        "RegistrationTime": "2025-12-21T00:16:49.9868254-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "89ae34",
+        "Name": "Man 12",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#E8CDF0",
+        "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "a2a639",
+        "Name": "Man 15",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FAEED4",
+        "RegistrationTime": "2025-12-21T00:16:50.0297708-07:00",
+        "IsOut": false
+      },
+      "Round": 7,
+      "Court": 2,
+      "Time": "2025-12-21 19:18",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "4f33b61e-0ab0-40c7-8e87-21f0eecdedf5",
+      "P1": {
+        "Id": "e3eeef",
+        "Name": "Woman 13",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#A7D7F1",
+        "RegistrationTime": "2025-12-21T00:16:50.076367-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "2ba5f6",
+        "Name": "Woman 20",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#D1CFE1",
+        "RegistrationTime": "2025-12-21T00:16:50.1054917-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "679083",
+        "Name": "Woman 12",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#E2EAF8",
+        "RegistrationTime": "2025-12-21T00:16:50.0713839-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "349dd1",
+        "Name": "Woman 17",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#CFFDBA",
+        "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+        "IsOut": false
+      },
+      "Round": 7,
+      "Court": 3,
+      "Time": "2025-12-21 19:18",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "dc4e4331-759e-4067-9930-ad8cc3a7d2d4",
+      "P1": {
+        "Id": "16d0e1",
+        "Name": "Woman 16",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#AED2F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0903148-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "80395c",
+        "Name": "Woman 19",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8BE98",
+        "RegistrationTime": "2025-12-21T00:16:50.1008332-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "6e2c5e",
+        "Name": "Woman 15",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9EA596",
+        "RegistrationTime": "2025-12-21T00:16:50.0859252-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f4b5b9",
+        "Name": "Woman 18",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9ED4E7",
+        "RegistrationTime": "2025-12-21T00:16:50.1002525-07:00",
+        "IsOut": false
+      },
+      "Round": 7,
+      "Court": 4,
+      "Time": "2025-12-21 19:18",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "ebae7c3c-8fd2-48b2-895f-80c43ce465be",
+      "P1": {
+        "Id": "41987a",
+        "Name": "Man 4",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FCF3B0",
+        "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "5c7e32",
+        "Name": "Man 13",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DFA1A4",
+        "RegistrationTime": "2025-12-21T00:16:50.0203856-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "4b219f",
+        "Name": "Man 11",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#ADBAD4",
+        "RegistrationTime": "2025-12-21T00:16:50.0095887-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "161f3b",
+        "Name": "Man 14",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#C2F4F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0249459-07:00",
+        "IsOut": false
+      },
+      "Round": 8,
+      "Court": 1,
+      "Time": "2025-12-21 19:31",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "eb81feb4-10bb-460a-b425-d03c406c6cbb",
+      "P1": {
+        "Id": "679083",
+        "Name": "Woman 12",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#E2EAF8",
+        "RegistrationTime": "2025-12-21T00:16:50.0713839-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "2ba5f6",
+        "Name": "Woman 20",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#D1CFE1",
+        "RegistrationTime": "2025-12-21T00:16:50.1054917-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "b6e5a4",
+        "Name": "Woman 11",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8E7DB",
+        "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f1234d",
+        "Name": "Jane Smith",
+        "Skill": 4,
+        "Gender": "F",
+        "Color": "#F5979F",
+        "RegistrationTime": "2025-12-21T01:24:16.5445274-07:00",
+        "IsOut": false
+      },
+      "Round": 8,
+      "Court": 2,
+      "Time": "2025-12-21 19:31",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "6f45b37d-0a7d-4358-b66b-ab7687538acd",
+      "P1": {
+        "Id": "9eac09",
+        "Name": "Man 1",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D7AA96",
+        "RegistrationTime": "2025-12-21T00:16:49.963629-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "2aa218",
+        "Name": "Man 7",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D6F6FD",
+        "RegistrationTime": "2025-12-21T00:16:49.9913051-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "f2984b",
+        "Name": "Man 8",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DD9ADC",
+        "RegistrationTime": "2025-12-21T00:16:49.9959142-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "a16519",
+        "Name": "Man 16",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BEC5DF",
+        "RegistrationTime": "2025-12-21T00:16:50.0348807-07:00",
+        "IsOut": false
+      },
+      "Round": 8,
+      "Court": 3,
+      "Time": "2025-12-21 19:31",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "7da72b6b-7218-45b0-a1fc-2090ec17aacf",
+      "P1": {
+        "Id": "e3eeef",
+        "Name": "Woman 13",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#A7D7F1",
+        "RegistrationTime": "2025-12-21T00:16:50.076367-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "554bea",
+        "Name": "Woman 14",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#ACF7B1",
+        "RegistrationTime": "2025-12-21T00:16:50.0809052-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "16d0e1",
+        "Name": "Woman 16",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#AED2F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0903148-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f4b5b9",
+        "Name": "Woman 18",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9ED4E7",
+        "RegistrationTime": "2025-12-21T00:16:50.1002525-07:00",
+        "IsOut": false
+      },
+      "Round": 8,
+      "Court": 4,
+      "Time": "2025-12-21 19:31",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "f96bf96d-73f4-4244-9272-4f6ae1ab7624",
+      "P1": {
+        "Id": "12a97d",
+        "Name": "Man 5",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A8C7F8",
+        "RegistrationTime": "2025-12-21T00:16:49.9862459-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "89ae34",
+        "Name": "Man 12",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#E8CDF0",
+        "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "471e22",
+        "Name": "Man 3",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D0CFBD",
+        "RegistrationTime": "2025-12-21T00:16:49.9786681-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "a2a639",
+        "Name": "Man 15",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FAEED4",
+        "RegistrationTime": "2025-12-21T00:16:50.0297708-07:00",
+        "IsOut": false
+      },
+      "Round": 9,
+      "Court": 1,
+      "Time": "2025-12-21 19:44",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "cd89134d-c09c-4779-adc1-522893debc62",
+      "P1": {
+        "Id": "dc3f3c",
+        "Name": "Man 2",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#CA9DB5",
+        "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "ffaf2e",
+        "Name": "John Doe",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#AEB8C8",
+        "RegistrationTime": "2025-12-21T01:24:16.5393519-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "f2984b",
+        "Name": "Man 8",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DD9ADC",
+        "RegistrationTime": "2025-12-21T00:16:49.9959142-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "47e1a1",
+        "Name": "Man 10",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A79FBB",
+        "RegistrationTime": "2025-12-21T00:16:50.0051956-07:00",
+        "IsOut": false
+      },
+      "Round": 9,
+      "Court": 2,
+      "Time": "2025-12-21 19:44",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "2d43cdbb-699e-4032-82d1-2ae27dd94f4e",
+      "P1": {
+        "Id": "498da7",
+        "Name": "Man 6",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#9DA6DB",
+        "RegistrationTime": "2025-12-21T00:16:49.9868254-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "c84562",
+        "Name": "Man 9",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BBE5FC",
+        "RegistrationTime": "2025-12-21T00:16:50.0010426-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "2aa218",
+        "Name": "Man 7",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D6F6FD",
+        "RegistrationTime": "2025-12-21T00:16:49.9913051-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "4b219f",
+        "Name": "Man 11",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#ADBAD4",
+        "RegistrationTime": "2025-12-21T00:16:50.0095887-07:00",
+        "IsOut": false
+      },
+      "Round": 9,
+      "Court": 3,
+      "Time": "2025-12-21 19:44",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "146972a4-d6f6-4f4e-b862-47d069ac696f",
+      "P1": {
+        "Id": "349dd1",
+        "Name": "Woman 17",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#CFFDBA",
+        "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "80395c",
+        "Name": "Woman 19",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8BE98",
+        "RegistrationTime": "2025-12-21T00:16:50.1008332-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "6e2c5e",
+        "Name": "Woman 15",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9EA596",
+        "RegistrationTime": "2025-12-21T00:16:50.0859252-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "16d0e1",
+        "Name": "Woman 16",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#AED2F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0903148-07:00",
+        "IsOut": false
+      },
+      "Round": 9,
+      "Court": 4,
+      "Time": "2025-12-21 19:44",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "0266467a-4f7f-4631-bf47-4dcd315a3431",
+      "P1": {
+        "Id": "f4b5b9",
+        "Name": "Woman 18",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9ED4E7",
+        "RegistrationTime": "2025-12-21T00:16:50.1002525-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "f1234d",
+        "Name": "Jane Smith",
+        "Skill": 4,
+        "Gender": "F",
+        "Color": "#F5979F",
+        "RegistrationTime": "2025-12-21T01:24:16.5445274-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "b6e5a4",
+        "Name": "Woman 11",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8E7DB",
+        "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "e3eeef",
+        "Name": "Woman 13",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#A7D7F1",
+        "RegistrationTime": "2025-12-21T00:16:50.076367-07:00",
+        "IsOut": false
+      },
+      "Round": 10,
+      "Court": 1,
+      "Time": "2025-12-21 19:57",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "80fe79b5-0077-43f5-ba84-5897a93af95c",
+      "P1": {
+        "Id": "dc3f3c",
+        "Name": "Man 2",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#CA9DB5",
+        "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "5c7e32",
+        "Name": "Man 13",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DFA1A4",
+        "RegistrationTime": "2025-12-21T00:16:50.0203856-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "c84562",
+        "Name": "Man 9",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BBE5FC",
+        "RegistrationTime": "2025-12-21T00:16:50.0010426-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "89ae34",
+        "Name": "Man 12",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#E8CDF0",
+        "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+        "IsOut": false
+      },
+      "Round": 10,
+      "Court": 2,
+      "Time": "2025-12-21 19:57",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "9b6ff3ed-7d67-457e-9b5f-846c2b683a66",
+      "P1": {
+        "Id": "2aa218",
+        "Name": "Man 7",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D6F6FD",
+        "RegistrationTime": "2025-12-21T00:16:49.9913051-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "ffaf2e",
+        "Name": "John Doe",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#AEB8C8",
+        "RegistrationTime": "2025-12-21T01:24:16.5393519-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "471e22",
+        "Name": "Man 3",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D0CFBD",
+        "RegistrationTime": "2025-12-21T00:16:49.9786681-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "4b219f",
+        "Name": "Man 11",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#ADBAD4",
+        "RegistrationTime": "2025-12-21T00:16:50.0095887-07:00",
+        "IsOut": false
+      },
+      "Round": 10,
+      "Court": 3,
+      "Time": "2025-12-21 19:57",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "3a4e1047-5fc5-4b90-a380-11c2c15ea4f5",
+      "P1": {
+        "Id": "9eac09",
+        "Name": "Man 1",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D7AA96",
+        "RegistrationTime": "2025-12-21T00:16:49.963629-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "12a97d",
+        "Name": "Man 5",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A8C7F8",
+        "RegistrationTime": "2025-12-21T00:16:49.9862459-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "41987a",
+        "Name": "Man 4",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FCF3B0",
+        "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "47e1a1",
+        "Name": "Man 10",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A79FBB",
+        "RegistrationTime": "2025-12-21T00:16:50.0051956-07:00",
+        "IsOut": false
+      },
+      "Round": 10,
+      "Court": 4,
+      "Time": "2025-12-21 19:57",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "22881b9b-eff8-4295-99c7-b271bfcfd846",
+      "P1": {
+        "Id": "554bea",
+        "Name": "Woman 14",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#ACF7B1",
+        "RegistrationTime": "2025-12-21T00:16:50.0809052-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "16d0e1",
+        "Name": "Woman 16",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#AED2F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0903148-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "679083",
+        "Name": "Woman 12",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#E2EAF8",
+        "RegistrationTime": "2025-12-21T00:16:50.0713839-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f1234d",
+        "Name": "Jane Smith",
+        "Skill": 4,
+        "Gender": "F",
+        "Color": "#F5979F",
+        "RegistrationTime": "2025-12-21T01:24:16.5445274-07:00",
+        "IsOut": false
+      },
+      "Round": 11,
+      "Court": 1,
+      "Time": "2025-12-21 20:10",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "0755262c-bce0-44a8-a011-4c97c84bb5a6",
+      "P1": {
+        "Id": "f4b5b9",
+        "Name": "Woman 18",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9ED4E7",
+        "RegistrationTime": "2025-12-21T00:16:50.1002525-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "80395c",
+        "Name": "Woman 19",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8BE98",
+        "RegistrationTime": "2025-12-21T00:16:50.1008332-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "349dd1",
+        "Name": "Woman 17",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#CFFDBA",
+        "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "2ba5f6",
+        "Name": "Woman 20",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#D1CFE1",
+        "RegistrationTime": "2025-12-21T00:16:50.1054917-07:00",
+        "IsOut": false
+      },
+      "Round": 11,
+      "Court": 2,
+      "Time": "2025-12-21 20:10",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "4a7d311d-181c-48a0-bdc0-a4c407da81c2",
+      "P1": {
+        "Id": "41987a",
+        "Name": "Man 4",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FCF3B0",
+        "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "a2a639",
+        "Name": "Man 15",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FAEED4",
+        "RegistrationTime": "2025-12-21T00:16:50.0297708-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "f2984b",
+        "Name": "Man 8",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DD9ADC",
+        "RegistrationTime": "2025-12-21T00:16:49.9959142-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "ffaf2e",
+        "Name": "John Doe",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#AEB8C8",
+        "RegistrationTime": "2025-12-21T01:24:16.5393519-07:00",
+        "IsOut": false
+      },
+      "Round": 11,
+      "Court": 3,
+      "Time": "2025-12-21 20:10",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "ec0909ff-e830-49b3-a3e7-38d94b2519c5",
+      "P1": {
+        "Id": "4b219f",
+        "Name": "Man 11",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#ADBAD4",
+        "RegistrationTime": "2025-12-21T00:16:50.0095887-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "89ae34",
+        "Name": "Man 12",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#E8CDF0",
+        "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "498da7",
+        "Name": "Man 6",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#9DA6DB",
+        "RegistrationTime": "2025-12-21T00:16:49.9868254-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "161f3b",
+        "Name": "Man 14",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#C2F4F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0249459-07:00",
+        "IsOut": false
+      },
+      "Round": 11,
+      "Court": 4,
+      "Time": "2025-12-21 20:10",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "1c02a225-08c2-4adc-a1b8-75a7c34d3d01",
+      "P1": {
+        "Id": "679083",
+        "Name": "Woman 12",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#E2EAF8",
+        "RegistrationTime": "2025-12-21T00:16:50.0713839-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "6e2c5e",
+        "Name": "Woman 15",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9EA596",
+        "RegistrationTime": "2025-12-21T00:16:50.0859252-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "b6e5a4",
+        "Name": "Woman 11",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8E7DB",
+        "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "554bea",
+        "Name": "Woman 14",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#ACF7B1",
+        "RegistrationTime": "2025-12-21T00:16:50.0809052-07:00",
+        "IsOut": false
+      },
+      "Round": 12,
+      "Court": 1,
+      "Time": "2025-12-21 20:23",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "8758a4f6-2490-4fbb-8535-2c83c255cbfd",
+      "P1": {
+        "Id": "12a97d",
+        "Name": "Man 5",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A8C7F8",
+        "RegistrationTime": "2025-12-21T00:16:49.9862459-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "5c7e32",
+        "Name": "Man 13",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DFA1A4",
+        "RegistrationTime": "2025-12-21T00:16:50.0203856-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "9eac09",
+        "Name": "Man 1",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D7AA96",
+        "RegistrationTime": "2025-12-21T00:16:49.963629-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "41987a",
+        "Name": "Man 4",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FCF3B0",
+        "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+        "IsOut": false
+      },
+      "Round": 12,
+      "Court": 2,
+      "Time": "2025-12-21 20:23",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "23e24217-7950-4063-bb1b-c95410dcfcca",
+      "P1": {
+        "Id": "471e22",
+        "Name": "Man 3",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D0CFBD",
+        "RegistrationTime": "2025-12-21T00:16:49.9786681-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "2aa218",
+        "Name": "Man 7",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D6F6FD",
+        "RegistrationTime": "2025-12-21T00:16:49.9913051-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "dc3f3c",
+        "Name": "Man 2",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#CA9DB5",
+        "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "c84562",
+        "Name": "Man 9",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BBE5FC",
+        "RegistrationTime": "2025-12-21T00:16:50.0010426-07:00",
+        "IsOut": false
+      },
+      "Round": 12,
+      "Court": 3,
+      "Time": "2025-12-21 20:23",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "8c733081-073d-4263-bccb-c4b9f69a3d12",
+      "P1": {
+        "Id": "2ba5f6",
+        "Name": "Woman 20",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#D1CFE1",
+        "RegistrationTime": "2025-12-21T00:16:50.1054917-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "f1234d",
+        "Name": "Jane Smith",
+        "Skill": 4,
+        "Gender": "F",
+        "Color": "#F5979F",
+        "RegistrationTime": "2025-12-21T01:24:16.5445274-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "e3eeef",
+        "Name": "Woman 13",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#A7D7F1",
+        "RegistrationTime": "2025-12-21T00:16:50.076367-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "349dd1",
+        "Name": "Woman 17",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#CFFDBA",
+        "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+        "IsOut": false
+      },
+      "Round": 12,
+      "Court": 4,
+      "Time": "2025-12-21 20:23",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "9e781f3f-ec67-4929-97a5-2cfcab88ffdb",
+      "P1": {
+        "Id": "dc3f3c",
+        "Name": "Man 2",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#CA9DB5",
+        "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "f2984b",
+        "Name": "Man 8",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DD9ADC",
+        "RegistrationTime": "2025-12-21T00:16:49.9959142-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "498da7",
+        "Name": "Man 6",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#9DA6DB",
+        "RegistrationTime": "2025-12-21T00:16:49.9868254-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "a16519",
+        "Name": "Man 16",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BEC5DF",
+        "RegistrationTime": "2025-12-21T00:16:50.0348807-07:00",
+        "IsOut": false
+      },
+      "Round": 13,
+      "Court": 1,
+      "Time": "2025-12-21 20:36",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "0760decd-6574-42ff-895c-656c9b89d212",
+      "P1": {
+        "Id": "47e1a1",
+        "Name": "Man 10",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A79FBB",
+        "RegistrationTime": "2025-12-21T00:16:50.0051956-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "a2a639",
+        "Name": "Man 15",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FAEED4",
+        "RegistrationTime": "2025-12-21T00:16:50.0297708-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "89ae34",
+        "Name": "Man 12",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#E8CDF0",
+        "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "161f3b",
+        "Name": "Man 14",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#C2F4F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0249459-07:00",
+        "IsOut": false
+      },
+      "Round": 13,
+      "Court": 2,
+      "Time": "2025-12-21 20:36",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "73b4ccd0-561d-4d42-a54d-b083b141cece",
+      "P1": {
+        "Id": "e3eeef",
+        "Name": "Woman 13",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#A7D7F1",
+        "RegistrationTime": "2025-12-21T00:16:50.076367-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "80395c",
+        "Name": "Woman 19",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8BE98",
+        "RegistrationTime": "2025-12-21T00:16:50.1008332-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "b6e5a4",
+        "Name": "Woman 11",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8E7DB",
+        "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f4b5b9",
+        "Name": "Woman 18",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9ED4E7",
+        "RegistrationTime": "2025-12-21T00:16:50.1002525-07:00",
+        "IsOut": false
+      },
+      "Round": 13,
+      "Court": 3,
+      "Time": "2025-12-21 20:36",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "22a40a9e-e1bf-4eb7-a0b1-f3dfa67bedbb",
+      "P1": {
+        "Id": "c84562",
+        "Name": "Man 9",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BBE5FC",
+        "RegistrationTime": "2025-12-21T00:16:50.0010426-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "5c7e32",
+        "Name": "Man 13",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DFA1A4",
+        "RegistrationTime": "2025-12-21T00:16:50.0203856-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "41987a",
+        "Name": "Man 4",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FCF3B0",
+        "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "12a97d",
+        "Name": "Man 5",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A8C7F8",
+        "RegistrationTime": "2025-12-21T00:16:49.9862459-07:00",
+        "IsOut": false
+      },
+      "Round": 13,
+      "Court": 4,
+      "Time": "2025-12-21 20:36",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "a68e9fde-9768-47ef-84b4-96bb70646751",
+      "P1": {
+        "Id": "554bea",
+        "Name": "Woman 14",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#ACF7B1",
+        "RegistrationTime": "2025-12-21T00:16:50.0809052-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "f1234d",
+        "Name": "Jane Smith",
+        "Skill": 4,
+        "Gender": "F",
+        "Color": "#F5979F",
+        "RegistrationTime": "2025-12-21T01:24:16.5445274-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "6e2c5e",
+        "Name": "Woman 15",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9EA596",
+        "RegistrationTime": "2025-12-21T00:16:50.0859252-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "349dd1",
+        "Name": "Woman 17",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#CFFDBA",
+        "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+        "IsOut": false
+      },
+      "Round": 14,
+      "Court": 1,
+      "Time": "2025-12-21 20:49",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "cc25ff86-310c-493a-84a4-bac5cbd2621a",
+      "P1": {
+        "Id": "9eac09",
+        "Name": "Man 1",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D7AA96",
+        "RegistrationTime": "2025-12-21T00:16:49.963629-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "471e22",
+        "Name": "Man 3",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D0CFBD",
+        "RegistrationTime": "2025-12-21T00:16:49.9786681-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "a16519",
+        "Name": "Man 16",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BEC5DF",
+        "RegistrationTime": "2025-12-21T00:16:50.0348807-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "ffaf2e",
+        "Name": "John Doe",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#AEB8C8",
+        "RegistrationTime": "2025-12-21T01:24:16.5393519-07:00",
+        "IsOut": false
+      },
+      "Round": 14,
+      "Court": 2,
+      "Time": "2025-12-21 20:49",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "f9684b05-f44a-42ae-8239-ed07a04c0139",
+      "P1": {
+        "Id": "47e1a1",
+        "Name": "Man 10",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A79FBB",
+        "RegistrationTime": "2025-12-21T00:16:50.0051956-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "89ae34",
+        "Name": "Man 12",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#E8CDF0",
+        "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "41987a",
+        "Name": "Man 4",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FCF3B0",
+        "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "2aa218",
+        "Name": "Man 7",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D6F6FD",
+        "RegistrationTime": "2025-12-21T00:16:49.9913051-07:00",
+        "IsOut": false
+      },
+      "Round": 14,
+      "Court": 3,
+      "Time": "2025-12-21 20:49",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "a78c3848-d6fe-41fa-a65b-cebd162abab6",
+      "P1": {
+        "Id": "12a97d",
+        "Name": "Man 5",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A8C7F8",
+        "RegistrationTime": "2025-12-21T00:16:49.9862459-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "161f3b",
+        "Name": "Man 14",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#C2F4F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0249459-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "dc3f3c",
+        "Name": "Man 2",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#CA9DB5",
+        "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "a2a639",
+        "Name": "Man 15",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FAEED4",
+        "RegistrationTime": "2025-12-21T00:16:50.0297708-07:00",
+        "IsOut": false
+      },
+      "Round": 14,
+      "Court": 4,
+      "Time": "2025-12-21 20:49",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "c3267595-8070-4573-930e-7bf9a33906d4",
+      "P1": {
+        "Id": "4b219f",
+        "Name": "Man 11",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#ADBAD4",
+        "RegistrationTime": "2025-12-21T00:16:50.0095887-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "a2a639",
+        "Name": "Man 15",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FAEED4",
+        "RegistrationTime": "2025-12-21T00:16:50.0297708-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "c84562",
+        "Name": "Man 9",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BBE5FC",
+        "RegistrationTime": "2025-12-21T00:16:50.0010426-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "a16519",
+        "Name": "Man 16",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BEC5DF",
+        "RegistrationTime": "2025-12-21T00:16:50.0348807-07:00",
+        "IsOut": false
+      },
+      "Round": 15,
+      "Court": 1,
+      "Time": "2025-12-21 21:02",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "1ce68b36-5300-40aa-8dd3-8cab595fc54c",
+      "P1": {
+        "Id": "b6e5a4",
+        "Name": "Woman 11",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8E7DB",
+        "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "349dd1",
+        "Name": "Woman 17",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#CFFDBA",
+        "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "16d0e1",
+        "Name": "Woman 16",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#AED2F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0903148-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "2ba5f6",
+        "Name": "Woman 20",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#D1CFE1",
+        "RegistrationTime": "2025-12-21T00:16:50.1054917-07:00",
+        "IsOut": false
+      },
+      "Round": 15,
+      "Court": 2,
+      "Time": "2025-12-21 21:02",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "7909ecfa-8e62-4e63-8efa-81201554ef4d",
+      "P1": {
+        "Id": "6e2c5e",
+        "Name": "Woman 15",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9EA596",
+        "RegistrationTime": "2025-12-21T00:16:50.0859252-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "80395c",
+        "Name": "Woman 19",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8BE98",
+        "RegistrationTime": "2025-12-21T00:16:50.1008332-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "679083",
+        "Name": "Woman 12",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#E2EAF8",
+        "RegistrationTime": "2025-12-21T00:16:50.0713839-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "f4b5b9",
+        "Name": "Woman 18",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#9ED4E7",
+        "RegistrationTime": "2025-12-21T00:16:50.1002525-07:00",
+        "IsOut": false
+      },
+      "Round": 15,
+      "Court": 3,
+      "Time": "2025-12-21 21:02",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "b2957808-890a-457c-a757-8cea929d0184",
+      "P1": {
+        "Id": "41987a",
+        "Name": "Man 4",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#FCF3B0",
+        "RegistrationTime": "2025-12-21T00:16:49.9797541-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "498da7",
+        "Name": "Man 6",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#9DA6DB",
+        "RegistrationTime": "2025-12-21T00:16:49.9868254-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "f2984b",
+        "Name": "Man 8",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DD9ADC",
+        "RegistrationTime": "2025-12-21T00:16:49.9959142-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "161f3b",
+        "Name": "Man 14",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#C2F4F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0249459-07:00",
+        "IsOut": false
+      },
+      "Round": 15,
+      "Court": 4,
+      "Time": "2025-12-21 21:02",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "82d7bcb5-41d7-452b-91c9-767785ea3d39",
+      "P1": {
+        "Id": "80395c",
+        "Name": "Woman 19",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8BE98",
+        "RegistrationTime": "2025-12-21T00:16:50.1008332-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "f1234d",
+        "Name": "Jane Smith",
+        "Skill": 4,
+        "Gender": "F",
+        "Color": "#F5979F",
+        "RegistrationTime": "2025-12-21T01:24:16.5445274-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "679083",
+        "Name": "Woman 12",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#E2EAF8",
+        "RegistrationTime": "2025-12-21T00:16:50.0713839-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "e3eeef",
+        "Name": "Woman 13",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#A7D7F1",
+        "RegistrationTime": "2025-12-21T00:16:50.076367-07:00",
+        "IsOut": false
+      },
+      "Round": 16,
+      "Court": 1,
+      "Time": "2025-12-21 21:15",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 1
+    },
+    {
+      "Id": "072b7583-c6fc-46cf-8284-e5fba5b62d78",
+      "P1": {
+        "Id": "5c7e32",
+        "Name": "Man 13",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#DFA1A4",
+        "RegistrationTime": "2025-12-21T00:16:50.0203856-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "ffaf2e",
+        "Name": "John Doe",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#AEB8C8",
+        "RegistrationTime": "2025-12-21T01:24:16.5393519-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "dc3f3c",
+        "Name": "Man 2",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#CA9DB5",
+        "RegistrationTime": "2025-12-21T00:16:49.9697446-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "47e1a1",
+        "Name": "Man 10",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#A79FBB",
+        "RegistrationTime": "2025-12-21T00:16:50.0051956-07:00",
+        "IsOut": false
+      },
+      "Round": 16,
+      "Court": 2,
+      "Time": "2025-12-21 21:15",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "57473434-2f93-4baf-85a5-e5821769a582",
+      "P1": {
+        "Id": "4b219f",
+        "Name": "Man 11",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#ADBAD4",
+        "RegistrationTime": "2025-12-21T00:16:50.0095887-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "a16519",
+        "Name": "Man 16",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#BEC5DF",
+        "RegistrationTime": "2025-12-21T00:16:50.0348807-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "9eac09",
+        "Name": "Man 1",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#D7AA96",
+        "RegistrationTime": "2025-12-21T00:16:49.963629-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "89ae34",
+        "Name": "Man 12",
+        "Skill": 3,
+        "Gender": "M",
+        "Color": "#E8CDF0",
+        "RegistrationTime": "2025-12-21T00:16:50.0157114-07:00",
+        "IsOut": false
+      },
+      "Round": 16,
+      "Court": 3,
+      "Time": "2025-12-21 21:15",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    },
+    {
+      "Id": "6b08fcb8-8ad7-48ab-af6c-c93ae7dc66a2",
+      "P1": {
+        "Id": "16d0e1",
+        "Name": "Woman 16",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#AED2F6",
+        "RegistrationTime": "2025-12-21T00:16:50.0903148-07:00",
+        "IsOut": false
+      },
+      "P2": {
+        "Id": "349dd1",
+        "Name": "Woman 17",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#CFFDBA",
+        "RegistrationTime": "2025-12-21T00:16:50.095058-07:00",
+        "IsOut": false
+      },
+      "P3": {
+        "Id": "b6e5a4",
+        "Name": "Woman 11",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#C8E7DB",
+        "RegistrationTime": "2025-12-21T00:16:50.066859-07:00",
+        "IsOut": false
+      },
+      "P4": {
+        "Id": "2ba5f6",
+        "Name": "Woman 20",
+        "Skill": 3,
+        "Gender": "F",
+        "Color": "#D1CFE1",
+        "RegistrationTime": "2025-12-21T00:16:50.1054917-07:00",
+        "IsOut": false
+      },
+      "Round": 16,
+      "Court": 4,
+      "Time": "2025-12-21 21:15",
+      "Score1": null,
+      "Score2": null,
+      "ServingTeam": 2
+    }
+  ]
+}
