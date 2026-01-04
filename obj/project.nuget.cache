@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Gl9or5HPy2Q=",
+  "dgSpecHash": "gV3Z6qqRSCE=",
   "success": true,
-  "projectFilePath": "D:\\work\\tournament_scheduler\\TournamentScheduler.App\\TournamentScheduler.App.csproj",
+  "projectFilePath": "D:\\work\\TournamentScheduler.App\\TournamentScheduler.App.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\draje\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.11\\microsoft.netcore.app.ref.9.0.11.nupkg.sha512",
     "C:\\Users\\draje\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.11\\microsoft.windowsdesktop.app.ref.9.0.11.nupkg.sha512",
