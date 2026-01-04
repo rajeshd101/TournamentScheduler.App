@@ -1,4 +1,3 @@
-
 @page "/schedule"
 @inject TournamentState State
 @inject SchedulerService Scheduler
@@ -90,27 +89,43 @@
                     </div>
                     @if(currentRound != null)
                     {
-                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
                             @foreach(var m in currentRound)
                             {
                                 <div style="background:rgba(255,255,255,0.05); border-radius:6px; padding:0.5rem; flex:1; min-width:200px;">
                                     <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.25rem;">Court#@m.Court</div>
                                     <div style="display:flex; justify-content:space-between; align-items:center; gap: 1rem;">
                                         <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
-                                            <span style="@GetPlayerStyle(m.P1)">@m.P1.Name</span>
-                                            <span style="@GetPlayerStyle(m.P2)">@m.P2.Name</span>
+                                            <span style="@GetPlayerStyle(m.P1)">@m.P1?.Name</span>
+                                            <span style="@GetPlayerStyle(m.P2)">@m.P2?.Name</span>
                                         </div>
                                         <span style="font-weight:bold; color:var(--accent); font-size:0.9rem;">
                                             vs
                                         </span>
                                         <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
-                                            <span style="@GetPlayerStyle(m.P3)">@m.P3.Name</span>
-                                            <span style="@GetPlayerStyle(m.P4)">@m.P4.Name</span>
+                                            <span style="@GetPlayerStyle(m.P3)">@m.P3?.Name</span>
+                                            <span style="@GetPlayerStyle(m.P4)">@m.P4?.Name</span>
                                         </div>
                                     </div>
                                 </div>
                             }
                         </div>
+                        
+                        var restingCurrent = GetRestingPlayers(currentRound);
+                        @if (restingCurrent.Any())
+                        {
+                            <div style="border-top:1px solid rgba(255,193,7,0.1); padding-top:0.75rem;">
+                                <div style="font-size:0.8rem; color:#ffc107; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                                    <span>🍃 Resting Players (Current)</span>
+                                </div>
+                                <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                                    @foreach(var p in restingCurrent)
+                                    {
+                                        <span style="@GetRestingPlayerStyle(p)">@p.Name</span>
+                                    }
+                                </div>
+                            </div>
+                        }
                     }
                     else
                     {
@@ -121,9 +136,7 @@
                 @* Next Round Panel *@
                 <div class="glass-panel" style="padding:1rem; border-left:4px solid #42a5f5; background:rgba(66,165,245,0.05);">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
-                        <div style="display:flex; align-items:center; gap:0.75rem;">
-                            <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Next Round @(nextRound?.Key ?? 0)</h3>
-                        </div>
+                        <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Next Round @(nextRound?.Key ?? 0)</h3>
                         @if(nextRound != null)
                         {
                             <span style="font-size:0.85rem; color:var(--text-muted);">@nextRound.First().Time</span>
@@ -131,49 +144,47 @@
                     </div>
                     @if(nextRound != null)
                     {
-                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
                             @foreach(var m in nextRound)
                             {
                                 <div style="background:rgba(255,255,255,0.05); border-radius:6px; padding:0.5rem; flex:1; min-width:200px;">
                                     <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.25rem;">Court#@m.Court</div>
                                     <div style="display:flex; justify-content:space-between; align-items:center; gap: 1rem;">
                                         <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
-                                            <span style="@GetPlayerStyle(m.P1)">@m.P1.Name</span>
-                                            <span style="@GetPlayerStyle(m.P2)">@m.P2.Name</span>
+                                            <span style="@GetPlayerStyle(m.P1)">@m.P1?.Name</span>
+                                            <span style="@GetPlayerStyle(m.P2)">@m.P2?.Name</span>
                                         </div>
                                         <span style="font-weight:bold; color:var(--text-muted); font-size:0.8rem;">vs</span>
                                         <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
-                                            <span style="@GetPlayerStyle(m.P3)">@m.P3.Name</span>
-                                            <span style="@GetPlayerStyle(m.P4)">@m.P4.Name</span>
+                                            <span style="@GetPlayerStyle(m.P3)">@m.P3?.Name</span>
+                                            <span style="@GetPlayerStyle(m.P4)">@m.P4?.Name</span>
                                         </div>
                                     </div>
                                 </div>
                             }
                         </div>
+
+                        var restingNext = GetRestingPlayers(nextRound);
+                        @if (restingNext.Any())
+                        {
+                            <div style="border-top:1px solid rgba(66,165,245,0.1); padding-top:0.75rem;">
+                                <div style="font-size:0.8rem; color:#42a5f5; margin-bottom:0.5rem; display:flex; align-items:center; gap:0.5rem;">
+                                    <span>🍃 Resting Players (Next)</span>
+                                </div>
+                                <div style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+                                    @foreach(var p in restingNext)
+                                    {
+                                        <span style="@GetRestingPlayerStyle(p)">@p.Name</span>
+                                    }
+                                </div>
+                            </div>
+                        }
                     }
                     else
                     {
                         <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">This is the final round</p>
                     }
                 </div>
-
-                @* Resting Players Panel *@
-                @{
-                    var targetRound = nextRound ?? currentRound;
-                    var restingPlayers = GetRestingPlayers(targetRound);
-                }
-                @if (restingPlayers.Any())
-                {
-                    <div class="glass-panel" style="padding:1rem; border-left:4px solid #66bb6a; background:rgba(102,187,106,0.05);">
-                        <h3 style="margin:0; color:#66bb6a; font-size:1rem; margin-bottom:0.75rem;">🍃 Resting Players @(targetRound == nextRound ? "(Next Round)" : "(Current Round)")</h3>
-                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
-                            @foreach(var p in restingPlayers)
-                            {
-                                <span style="@GetRestingPlayerStyle(p)">@p.Name</span>
-                            }
-                        </div>
-                    </div>
-                }
             </div>
         }
 
@@ -400,16 +411,18 @@ else
         _showFullSchedule = !_showFullSchedule;
     }
 
-    private string GetPlayerStyle(Player p)
+    private string GetPlayerStyle(Player? p)
     {
+         if (p == null) return "";
          var recent = State.Players.FirstOrDefault(x => x.Id == p.Id);
          string color = recent?.Color ?? "#333";
          string textColor = State.GetContrastColor(color);
          return $"background-color: {color}; color: {textColor}; padding: 2px 8px; border-radius: 4px; font-weight: 500; font-size: 0.85rem; text-align: center; white-space: nowrap; width: 100%; display: block;";
     }
 
-    private string GetRestingPlayerStyle(Player p)
+    private string GetRestingPlayerStyle(Player? p)
     {
+         if (p == null) return "";
          var recent = State.Players.FirstOrDefault(x => x.Id == p.Id);
          string color = recent?.Color ?? "#333";
          string textColor = State.GetContrastColor(color);
@@ -500,19 +513,19 @@ else
 
     private List<Player> GetRestingPlayers(IGrouping<int, Match>? round)
     {
-        if (round == null) return new List<Player>();
+        if (round == null || State.Players == null) return new List<Player>();
         
         var playingIds = new HashSet<string>();
         foreach (var m in round)
         {
-            playingIds.Add(m.P1.Id);
-            playingIds.Add(m.P2.Id);
-            playingIds.Add(m.P3.Id);
-            playingIds.Add(m.P4.Id);
+            if (m.P1?.Id != null) playingIds.Add(m.P1.Id);
+            if (m.P2?.Id != null) playingIds.Add(m.P2.Id);
+            if (m.P3?.Id != null) playingIds.Add(m.P3.Id);
+            if (m.P4?.Id != null) playingIds.Add(m.P4.Id);
         }
         
         return State.Players
-            .Where(p => !p.IsOut && !playingIds.Contains(p.Id))
+            .Where(p => p != null && !p.IsOut && !playingIds.Contains(p.Id))
             .OrderBy(p => p.Name)
             .ToList();
     }
