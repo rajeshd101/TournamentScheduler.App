@@ -159,7 +159,7 @@
                         <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
                             @foreach(var p in restingPlayers)
                             {
-                                <span style="@GetPlayerStyle(p)">@p.Name</span>
+                                <span style="@GetRestingPlayerStyle(p)">@p.Name</span>
                             }
                         </div>
                     </div>
@@ -393,6 +393,14 @@ else
          string color = recent?.Color ?? "#333";
          string textColor = State.GetContrastColor(color);
          return $"background-color: {color}; color: {textColor}; padding: 2px 8px; border-radius: 4px; font-weight: 500; font-size: 0.85rem; text-align: center; white-space: nowrap; width: 100%; display: block;";
+    }
+
+    private string GetRestingPlayerStyle(Player p)
+    {
+         var recent = State.Players.FirstOrDefault(x => x.Id == p.Id);
+         string color = recent?.Color ?? "#333";
+         string textColor = State.GetContrastColor(color);
+         return $"background-color: {color}; color: {textColor}; padding: 2px 8px; border-radius: 4px; font-weight: 500; font-size: 0.85rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;";
     }
 
     private HashSet<string> GetActivePlayers()
