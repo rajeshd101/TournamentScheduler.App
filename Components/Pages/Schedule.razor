@@ -123,12 +123,6 @@
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
                         <div style="display:flex; align-items:center; gap:0.75rem;">
                             <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Next Round @(nextRound?.Key ?? 0)</h3>
-                            @if(nextRound != null)
-                            {
-                                <span class="badge" style="background:rgba(66,165,245,0.2); color:#42a5f5; font-size:0.8rem; padding:2px 8px;">
-                                    ⏳ @GetTimeUntil(nextRound.First().Time)
-                                </span>
-                            }
                         </div>
                         @if(nextRound != null)
                         {
@@ -331,8 +325,6 @@ else
 </div>
 
 @code {
-    private string Message = "";
-    private bool IsGenerating = false;
     private bool _isGenerateLocked = false; // Lock generate after first use
     private bool _showFullSchedule = false;
     private System.Threading.Timer? _timer;
@@ -475,17 +467,6 @@ else
             var remaining = endTime - DateTime.Now;
             if (remaining.TotalMinutes <= 0) return "Finishing...";
             return $"{(int)remaining.TotalMinutes}m left";
-        }
-        return "";
-    }
-
-    private string GetTimeUntil(string timeStr)
-    {
-        if (DateTime.TryParse(timeStr, out var startTime))
-        {
-            var until = startTime - DateTime.Now;
-            if (until.TotalMinutes <= 0) return "Starting...";
-            return $"Starts in {(int)until.TotalMinutes}m";
         }
         return "";
     }
