@@ -1,4 +1,4 @@
-# 📖 Tournament Scheduler - User Guide
+# 📖 TourneyPro - User Guide
 
 **Version 1.0**  
 **Author**: Raj D  
@@ -299,4 +299,4 @@ For questions, issues, or feature requests:
 
 ---
 
-*Thank you for using Tournament Scheduler!* 🏓
+*Thank you for using TourneyPro!* 🏓

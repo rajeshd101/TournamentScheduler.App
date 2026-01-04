@@ -1,4 +1,4 @@
-# 🏓 Tournament Scheduler
+# 🏓 TourneyPro
 
 A modern, feature-rich tournament scheduling application for pickleball and other doubles/singles sports.
 
