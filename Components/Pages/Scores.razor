@@ -40,10 +40,10 @@
                 @* Current Round Panel *@
                 <div class="glass-panel" style="padding:1rem; border-left:4px solid #ffc107; background:rgba(255,193,7,0.05);">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
-                        <h3 style="margin:0; color:#ffc107; font-size:1rem;">🎯 Current Round @(currentRound?.Key ?? 0)</h3>
+                        <h3 style="margin:0; color:#ffc107; font-size:1rem;">🎯 Round @(currentRound?.Key ?? 0)</h3>
                         @if(currentRound != null)
                         {
-                            <span style="font-size:0.85rem; color:var(--text-muted);">@currentRound.First().Time</span>
+                            <span style="font-size:0.85rem; color:var(--text-muted);">@GetRoundTimeRange(currentRound.First().Time)</span>
                         }
                     </div>
                     @if(currentRound != null)
@@ -54,14 +54,14 @@
                                 <div style="background:rgba(255,255,255,0.05); border-radius:6px; padding:0.5rem; flex:1; min-width:200px;">
                                     <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.25rem;">Court @m.Court</div>
                                     <div style="display:flex; justify-content:space-between; align-items:center;">
-                                        <div style="display:flex; gap:4px;">
+                                        <div style="display:flex; flex-direction:column; gap:2px;">
                                             <span style="@GetPlayerStyle(m.P1)">@m.P1.Name</span>
                                             <span style="@GetPlayerStyle(m.P2)">@m.P2.Name</span>
                                         </div>
                                         <span style="font-weight:bold; color:var(--accent); font-size:0.9rem;">
                                             vs
                                         </span>
-                                        <div style="display:flex; gap:4px;">
+                                        <div style="display:flex; flex-direction:column; gap:2px;">
                                             <span style="@GetPlayerStyle(m.P3)">@m.P3.Name</span>
                                             <span style="@GetPlayerStyle(m.P4)">@m.P4.Name</span>
                                         </div>
@@ -79,10 +79,10 @@
                 @* Next Round Panel *@
                 <div class="glass-panel" style="padding:1rem; border-left:4px solid #42a5f5; background:rgba(66,165,245,0.05);">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
-                        <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Next Round @(nextRound?.Key ?? 0)</h3>
+                        <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Round @(nextRound?.Key ?? 0)</h3>
                         @if(nextRound != null)
                         {
-                            <span style="font-size:0.85rem; color:var(--text-muted);">@nextRound.First().Time</span>
+                            <span style="font-size:0.85rem; color:var(--text-muted);">@GetRoundTimeRange(nextRound.First().Time)</span>
                         }
                     </div>
                     @if(nextRound != null)
@@ -93,12 +93,12 @@
                                 <div style="background:rgba(255,255,255,0.05); border-radius:6px; padding:0.5rem; flex:1; min-width:200px;">
                                     <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.25rem;">Court @m.Court</div>
                                     <div style="display:flex; justify-content:space-between; align-items:center;">
-                                        <div style="display:flex; gap:4px;">
+                                        <div style="display:flex; flex-direction:column; gap:2px;">
                                             <span style="@GetPlayerStyle(m.P1)">@m.P1.Name</span>
                                             <span style="@GetPlayerStyle(m.P2)">@m.P2.Name</span>
                                         </div>
                                         <span style="font-weight:bold; color:var(--text-muted); font-size:0.8rem;">vs</span>
-                                        <div style="display:flex; gap:4px;">
+                                        <div style="display:flex; flex-direction:column; gap:2px;">
                                             <span style="@GetPlayerStyle(m.P3)">@m.P3.Name</span>
                                             <span style="@GetPlayerStyle(m.P4)">@m.P4.Name</span>
                                         </div>
@@ -516,7 +516,17 @@
          var recent = State.Players.FirstOrDefault(x => x.Id == p.Id);
          string color = recent?.Color ?? "#333";
          string textColor = State.GetContrastColor(color);
-         return $"background-color: {color}; color: {textColor}; padding: 2px 6px; border-radius: 4px; font-weight: 500; font-size: 0.9em;";
+         return $"background-color: {color}; color: {textColor}; padding: 2px 8px; border-radius: 4px; font-weight: 500; font-size: 0.85rem; text-align: center; white-space: nowrap; width: 100%; display: block;";
+    }
+
+    private string GetRoundTimeRange(string timeStr)
+    {
+        if (DateTime.TryParse(timeStr, out var startTime))
+        {
+            var endTime = startTime.AddMinutes(State.Config.Duration);
+            return $"{startTime:HH:mm} - {endTime:HH:mm}";
+        }
+        return timeStr;
     }
 
     private void UpdateScore(Match m, int team, object? value)

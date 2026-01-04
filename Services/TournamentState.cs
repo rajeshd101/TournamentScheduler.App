@@ -334,12 +334,26 @@ public class TournamentState
     {
         if (autoSave && AutoSaveEnabled)
         {
-            // Auto-persist to Documents/TourneyPro/{Name}/{Name}.json
-            string folder = System.IO.Path.Combine(DataPath, TournamentName);
-            if (!System.IO.Directory.Exists(folder)) System.IO.Directory.CreateDirectory(folder);
-            
-            string path = System.IO.Path.Combine(folder, TournamentName + ".json");
-            SaveInternal(path);
+            // Capture state for background saving to avoid thread pool starvation and concurrent modification issues
+            var playersCopy = Players.ToList();
+            var scheduleCopy = Schedule.ToList();
+            var configCopy = Config;
+            var nameCopy = TournamentName;
+            var pathCopy = DataPath;
+
+            _ = Task.Run(async () => {
+                try {
+                    string folder = System.IO.Path.Combine(pathCopy, nameCopy);
+                    if (!System.IO.Directory.Exists(folder)) System.IO.Directory.CreateDirectory(folder);
+                    string path = System.IO.Path.Combine(folder, nameCopy + ".json");
+                    
+                    var data = new TournamentData { Players = playersCopy, Config = configCopy, Schedule = scheduleCopy };
+                    string json = System.Text.Json.JsonSerializer.Serialize(data, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+                    await System.IO.File.WriteAllTextAsync(path, json);
+                } catch (Exception ex) {
+                    Console.WriteLine($"[Error Auto-Saving] {ex.Message}");
+                }
+            });
         }
         OnChange?.Invoke();
     }
