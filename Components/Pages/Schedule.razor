@@ -1,6 +1,9 @@
 @page "/schedule"
 @inject TournamentState State
 @inject SchedulerService Scheduler
+@inject IJSRuntime JS
+@implements IDisposable
+@inject NavigationManager Nav
 
 <div class="view-section active">
     <div class="card glass-panel" style="padding:0; overflow:visible;"> <!-- Remove padding from main card to let sticky header touch edges -->
@@ -10,9 +13,6 @@
             <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                 <h1 style="font-size: 1.75rem; font-weight: 700; margin: 0; background: linear-gradient(135deg, var(--text-main) 0%, var(--text-muted) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Schedule</h1>
                 <div class="actions" style="display: flex; gap: 0.75rem; align-items:center;">
-                    <button class="btn secondary" @onclick="ToggleFullSchedule" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
-                        <span style="opacity: 0.7;">📅</span> @(_showFullSchedule ? "Hide Full Schedule" : "Full Schedule")
-                    </button>
                     <button class="btn secondary" @onclick="PrintSchedule" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
                         <span style="opacity: 0.7;">🖨️</span> Export PDF
                     </button>
@@ -36,10 +36,7 @@
                 var totalMatches = State.Schedule.Count;
                 var totalRounds = State.Schedule.Max(m => m.Round);
                 var remaining = State.Schedule.Count(m => !m.Score1.HasValue || !m.Score2.HasValue);
-                var currentRoundGroup = State.Schedule
-                                        .GroupBy(m => m.Round)
-                                        .OrderBy(g => g.Key)
-                                        .FirstOrDefault(g => g.Any(m => !m.Score1.HasValue || !m.Score2.HasValue));
+                var currentRoundGroup = GetTimeBasedCurrentRound();
                 var currentRoundDisplay = currentRoundGroup != null ? $"{currentRoundGroup.Key}" : "-";
 
                 <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr); margin-bottom:0.5rem; gap:0.5rem;">
@@ -65,11 +62,11 @@
 
         @if (State.Schedule.Any())
         {
-            @* Current Round and Next Round Display Section *@
-            var currentRound = GetCurrentRound();
-            var nextRound = GetNextRound();
+            @* Current Round and Next Rounds Display Section *@
+            var currentRound = GetTimeBasedCurrentRound();
+            var futureRounds = GetTimeBasedFutureRounds();
             
-            <div style="display:flex; flex-direction:column; gap:1rem; margin: 1.5rem; margin-bottom:0;">
+            <div style="display:flex; flex-direction:column; gap:1rem; margin: 1.5rem; margin-bottom:1.5rem;">
                 @* Current Round Panel *@
                 <div class="glass-panel" style="padding:1rem; border-left:4px solid #ffc107; background:rgba(255,193,7,0.05);">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
@@ -133,17 +130,14 @@
                     }
                 </div>
                 
-                @* Next Round Panel *@
-                <div class="glass-panel" style="padding:1rem; border-left:4px solid #42a5f5; background:rgba(66,165,245,0.05);">
-                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
-                        <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Next Round @(nextRound?.Key ?? 0)</h3>
-                        @if(nextRound != null)
-                        {
+                @* Future Rounds Panels *@
+                @foreach (var nextRound in futureRounds)
+                {
+                    <div class="glass-panel" style="padding:1rem; border-left:4px solid #42a5f5; background:rgba(66,165,245,0.05);">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                            <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Next Round @(nextRound.Key)</h3>
                             <span style="font-size:0.85rem; color:var(--text-muted);">@nextRound.First().Time</span>
-                        }
-                    </div>
-                    @if(nextRound != null)
-                    {
+                        </div>
                         <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
                             @foreach(var m in nextRound)
                             {
@@ -164,7 +158,9 @@
                             }
                         </div>
 
-                        var restingNext = GetRestingPlayers(nextRound);
+                        @{
+                            var restingNext = GetRestingPlayers(nextRound);
+                        }
                         @if (restingNext.Any())
                         {
                             <div style="border-top:1px solid rgba(66,165,245,0.1); padding-top:0.75rem;">
@@ -179,19 +175,18 @@
                                 </div>
                             </div>
                         }
-                    }
-                    else
-                    {
-                        <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">This is the final round</p>
-                    }
-                </div>
+                    </div>
+                }
             </div>
         }
-
-@inject IJSRuntime JS
-
-@implements IDisposable
-@inject NavigationManager Nav
+        else
+        {
+            <p style="text-align:center; padding: 2rem; color: var(--text-muted);">
+                No schedule generated yet. Ensure you have enough players (min 4) and click Generate.
+            </p>
+        }
+    </div>
+</div>
 
 <style>
     @@keyframes flash-text-amber {
@@ -224,7 +219,6 @@
         display: flex;
         flex-direction: column;
         width: 100%;
-        /* No fixed height, let it grow */
     }
     
     .schedule-center { 
@@ -242,102 +236,11 @@
         position: sticky;
         left: 0;
         z-index: 10;
-        /* Ensure background matches panel to hide scroll content behind it */
     }
-
-
 </style>
-
-@if (State.Schedule.Any() && _showFullSchedule)
-{
-    var activePlayers = GetActivePlayers();
-
-    <div class="schedule-layout">
-        <div class="schedule-center" style="display:flex; flex-direction:column; gap:1rem; overflow:hidden; max-width: 1200px; margin: 0 auto; width: 100%;">
-            
-
-
-        <div style="flex:1; overflow: auto; padding: 1.5rem; max-height: 70vh;">
-            <table class="schedule-matrix-table" style="width:100%; border-collapse: separate; border-spacing: 0;">
-                <thead style="position: sticky; top: 0; z-index: 20; background: var(--bg-panel);">
-                    <tr>
-                        <th class="sticky-col" style="background:var(--bg-panel); z-index:30; left:0; border-bottom:2px solid var(--border); padding:1rem; text-align:left; position: sticky; top: 0;">Round</th>
-                            @for (int c = 1; c <= State.Config.Courts; c++)
-                            {
-                                <th style="border-bottom:2px solid var(--border); padding:1rem; text-align:center; min-width:200px; background:rgba(0,0,0,0.1); position: sticky; top: 0;">Court#@c</th>
-                            }
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var roundGroup in GetFilteredSchedule().GroupBy(m => m.Round).OrderBy(g => g.Key))
-                        {
-                            int round = roundGroup.Key;
-                            string time = roundGroup.First().Time;
-                            var matches = roundGroup.ToList();
-                            bool isCurrent = IsRoundActive(time);
-                            bool isCompleted = IsRoundCompleted(matches);
-                            string rowClass = isCurrent ? "current-round-row" : (isCompleted ? "completed-round-row" : "");
-                            
-                            <tr class="@rowClass">
-                                <!-- Round Header Column -->
-                                <td class="sticky-col" style="background:var(--bg-panel); z-index:10; left:0; border-bottom:1px solid var(--border); padding:1rem; font-weight:bold; border-right:1px solid var(--border);">
-                                    <div style="display:flex; flex-direction:column;">
-                                        <span style="font-size:1.1rem; color:var(--primary);">Round @round</span>
-                                        <span style="font-size:0.85rem; color:var(--text-muted); font-weight:normal;">@time</span>
-                                    </div>
-                                </td>
-
-                                <!-- Court Cells -->
-                                @for (int c = 1; c <= State.Config.Courts; c++)
-                                {
-                                    var match = matches.FirstOrDefault(m => m.Court == c);
-                                    <td style="border-bottom:1px solid var(--border); padding:0.5rem; border-right:1px solid rgba(255,255,255,0.05); vertical-align:top;">
-                                        @if (match != null)
-                                        {
-                                            <div style="background:rgba(255,255,255,0.03); border-radius:6px; padding:0.5rem; display:flex; flex-direction:column; gap:0.5rem;">
-                                                <!-- Team 1 -->
-                                                <div style="display:flex; flex-direction:column; gap:4px; align-items:center; position:relative;">
-                                                    @if(match.ServingTeam == 1) { <span style="position:absolute; left:-15px; top:50%; transform:translateY(-50%); font-size:0.8rem;" title="Serves first">🏓</span> }
-                                                    <div style="@GetPlayerStyle(match.P1)">@match.P1.Name</div>
-                                                    <div style="@GetPlayerStyle(match.P2)">@match.P2.Name</div>
-                                                </div>
-                                                
-                                                <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); font-weight:bold;">VS</div>
-                                                
-                                                <!-- Team 2 -->
-                                                <div style="display:flex; flex-direction:column; gap:4px; align-items:center; position:relative;">
-                                                    @if(match.ServingTeam == 2) { <span style="position:absolute; left:-15px; top:50%; transform:translateY(-50%); font-size:0.8rem;" title="Serves first">🏓</span> }
-                                                    <div style="@GetPlayerStyle(match.P3)">@match.P3.Name</div>
-                                                    <div style="@GetPlayerStyle(match.P4)">@match.P4.Name</div>
-                                                </div>
-                                            </div>
-                                        }
-                                        else
-                                        {
-                                            <div style="text-align:center; color:var(--text-muted); padding:1rem; opacity:0.5;">-</div>
-                                        }
-                                    </td>
-                                }
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-}
-else
-{
-    <p style="text-align:center; padding: 2rem; color: var(--text-muted);">
-        No schedule generated yet. Ensure you have enough players (min 4) and click Generate.
-    </p>
-}
-    </div>
-</div>
 
 @code {
     private bool _isGenerateLocked = false; // Lock generate after first use
-    private bool _showFullSchedule = false;
     private System.Threading.Timer? _timer;
 
     protected override void OnInitialized()
@@ -349,36 +252,11 @@ else
         _timer = new System.Threading.Timer(_ => InvokeAsync(StateHasChanged), null, 1000, 60000);
     }
 
-    private IEnumerable<Match> GetFilteredSchedule()
-    {
-        if (string.IsNullOrWhiteSpace(State.SearchTerm)) return State.Schedule;
-        return State.Schedule.Where(m => 
-            m.P1.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase) ||
-            m.P2.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase) ||
-            m.P3.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase) ||
-            m.P4.Name.Contains(State.SearchTerm, StringComparison.OrdinalIgnoreCase)
-        );
-    }
-    
     public void Dispose()
     {
         State.OnChange -= StateHasChanged;
         State.OnSearchChanged -= StateHasChanged;
         _timer?.Dispose();
-    }
-
-    private bool IsGenerationDisabled
-    {
-        get
-        {
-            // Disable 15 mins before StartTime
-            // Since StartTime is now Full DateTime, we use it directly.
-            var start = State.Config.StartTime;
-            var now = DateTime.Now;
-            
-            // If now is >= (Start - 15min), it's close or started.
-            return now >= start.AddMinutes(-15);
-        }
     }
 
     private async Task PrintSchedule()
@@ -406,11 +284,6 @@ else
         _isGenerateLocked = false;
     }
 
-    private void ToggleFullSchedule()
-    {
-        _showFullSchedule = !_showFullSchedule;
-    }
-
     private string GetPlayerStyle(Player? p)
     {
          if (p == null) return "";
@@ -429,45 +302,15 @@ else
          return $"background-color: {color}; color: {textColor}; padding: 2px 8px; border-radius: 4px; font-weight: 500; font-size: 0.85rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;";
     }
 
-    private HashSet<string> GetActivePlayers()
-    {
-        var active = new HashSet<string>();
-        // Identify active round
-        var roundGroups = State.Schedule.GroupBy(m => m.Round);
-        foreach(var g in roundGroups)
-        {
-            if (IsRoundActive(g.First().Time))
-            {
-                foreach(var m in g)
-                {
-                    active.Add(m.P1.Id);
-                    active.Add(m.P2.Id);
-                    active.Add(m.P3.Id);
-                    active.Add(m.P4.Id);
-                }
-            }
-        }
-        return active;
-    }
-
     private bool IsRoundActive(string timeStr)
     {
         if (string.IsNullOrWhiteSpace(timeStr)) return false;
         
-        // Try DateTime first (New Format)
         if (DateTime.TryParse(timeStr, out var startTime))
         {
             var now = DateTime.Now;
             var duration = TimeSpan.FromMinutes(State.Config.Duration + State.Config.BreakTime);
             return now >= startTime && now < startTime.Add(duration);
-        }
-
-        // Fallback TimeOnly (Old Format)
-        if (TimeOnly.TryParse(timeStr, out var t))
-        {
-            var now = TimeOnly.FromDateTime(DateTime.Now);
-            var duration = TimeSpan.FromMinutes(State.Config.Duration + State.Config.BreakTime);
-            return now >= t && now < t.Add(duration);
         }
         return false;
     }
@@ -484,31 +327,54 @@ else
         return "";
     }
 
-    private bool IsRoundCompleted(List<Match> matches)
+    // Helper: Get current round based on time
+    private IGrouping<int, Match>? GetTimeBasedCurrentRound()
     {
-        // A round is completed if all matches in it have scores
-        return matches.All(m => m.Score1.HasValue && m.Score2.HasValue);
-    }
-
-    // Helper: Get current round (first round with any unscored matches)
-    private IGrouping<int, Match>? GetCurrentRound()
-    {
-        return State.Schedule
+        var now = DateTime.Now;
+        var interval = State.Config.Duration + State.Config.BreakTime;
+        
+        // Find the round that is currently happening
+        var current = State.Schedule
             .GroupBy(m => m.Round)
             .OrderBy(g => g.Key)
-            .FirstOrDefault(g => g.Any(m => !m.Score1.HasValue || !m.Score2.HasValue));
+            .FirstOrDefault(g => 
+            {
+                if (DateTime.TryParse(g.First().Time, out var startTime))
+                {
+                    return now >= startTime && now < startTime.AddMinutes(interval);
+                }
+                return false;
+            });
+
+        // If no round is currently happening, find the first round that hasn't started yet
+        if (current == null)
+        {
+            current = State.Schedule
+                .GroupBy(m => m.Round)
+                .OrderBy(g => g.Key)
+                .FirstOrDefault(g => 
+                {
+                    if (DateTime.TryParse(g.First().Time, out var startTime))
+                    {
+                        return startTime > now;
+                    }
+                    return false;
+                });
+        }
+
+        return current;
     }
     
-    // Helper: Get next round (the round after current)
-    private IGrouping<int, Match>? GetNextRound()
+    // Helper: Get all future rounds based on time
+    private IEnumerable<IGrouping<int, Match>> GetTimeBasedFutureRounds()
     {
-        var current = GetCurrentRound();
-        if (current == null) return null;
+        var current = GetTimeBasedCurrentRound();
+        if (current == null) return Enumerable.Empty<IGrouping<int, Match>>();
         
         return State.Schedule
             .GroupBy(m => m.Round)
             .OrderBy(g => g.Key)
-            .FirstOrDefault(g => g.Key > current.Key);
+            .Where(g => g.Key > current.Key);
     }
 
     private List<Player> GetRestingPlayers(IGrouping<int, Match>? round)
@@ -528,36 +394,5 @@ else
             .Where(p => p != null && !p.IsOut && !playingIds.Contains(p.Id))
             .OrderBy(p => p.Name)
             .ToList();
-    }
-
-    private IEnumerable<(string Name, int Total, int Played, int Remaining)> GetPlayerStats(string gender)
-    {
-        var targetPlayers = State.Players.Where(p => string.Equals(p.Gender, gender, StringComparison.OrdinalIgnoreCase)).ToDictionary(p => p.Id, p => p.Name);
-        var stats = targetPlayers.Keys.ToDictionary(k => k, k => (Total: 0, Played: 0));
-
-        foreach(var m in State.Schedule)
-        {
-            void AddStat(string pid)
-            {
-                if (!stats.ContainsKey(pid)) return; 
-                var current = stats[pid];
-                current.Total++;
-                if (m.Score1.HasValue || m.Score2.HasValue) current.Played++;
-                stats[pid] = current;
-            }
-
-            AddStat(m.P1.Id);
-            AddStat(m.P2.Id);
-            AddStat(m.P3.Id);
-            AddStat(m.P4.Id);
-        }
-
-        return stats.Select(k => 
-        {
-            return (Name: targetPlayers[k.Key], Total: k.Value.Total, Played: k.Value.Played, Remaining: k.Value.Total - k.Value.Played);
-        })
-        .OrderByDescending(x => x.Total)
-        .ThenByDescending(x => x.Played)
-        .ThenBy(x => x.Name);
     }
 }
