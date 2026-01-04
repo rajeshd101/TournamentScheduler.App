@@ -146,6 +146,24 @@
                         <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">This is the final round</p>
                     }
                 </div>
+
+                @* Resting Players Panel *@
+                @{
+                    var targetRound = nextRound ?? currentRound;
+                    var restingPlayers = GetRestingPlayers(targetRound);
+                }
+                @if (restingPlayers.Any())
+                {
+                    <div class="glass-panel" style="padding:1rem; border-left:4px solid #66bb6a; background:rgba(102,187,106,0.05);">
+                        <h3 style="margin:0; color:#66bb6a; font-size:1rem; margin-bottom:0.75rem;">🍃 Resting Players @(targetRound == nextRound ? "(Next Round)" : "(Current Round)")</h3>
+                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
+                            @foreach(var p in restingPlayers)
+                            {
+                                <span style="@GetPlayerStyle(p)">@p.Name</span>
+                            }
+                        </div>
+                    </div>
+                }
             </div>
         }
 
@@ -445,6 +463,25 @@ else
             .GroupBy(m => m.Round)
             .OrderBy(g => g.Key)
             .FirstOrDefault(g => g.Key > current.Key);
+    }
+
+    private List<Player> GetRestingPlayers(IGrouping<int, Match>? round)
+    {
+        if (round == null) return new List<Player>();
+        
+        var playingIds = new HashSet<string>();
+        foreach (var m in round)
+        {
+            playingIds.Add(m.P1.Id);
+            playingIds.Add(m.P2.Id);
+            playingIds.Add(m.P3.Id);
+            playingIds.Add(m.P4.Id);
+        }
+        
+        return State.Players
+            .Where(p => !p.IsOut && !playingIds.Contains(p.Id))
+            .OrderBy(p => p.Name)
+            .ToList();
     }
 
     private IEnumerable<(string Name, int Total, int Played, int Remaining)> GetPlayerStats(string gender)

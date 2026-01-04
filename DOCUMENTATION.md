@@ -31,6 +31,8 @@ The scheduler (`Services/SchedulerService.cs`) is optimized for:
 - **100% Court Occupancy**: Mandatory condition to fill all available courts if at least 4 players are available.
 - **Fairness Engine**: Tracks game counts per player to ensure equal participation.
 - **Resting Logic**: Prioritizes players who did not play in the previous round while maintaining full occupancy.
+- **No Consecutive Repeats**: Ensures no two players play in the same match together in two consecutive rounds.
+- **High Randomness**: Uses randomized selection and scoring to ensure varied schedules even with identical player lists.
 - **Gender Rules**: 
   - **Doubles**: Same-gender teams.
   - **Singles**: 1v1 matches.
