@@ -11,6 +11,9 @@
             <div class="section-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
                 <h1 style="font-size: 1.75rem; font-weight: 700; margin: 0; background: linear-gradient(135deg, var(--text-main) 0%, var(--text-muted) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">TourneyPro Schedule</h1>
                 <div class="actions" style="display: flex; gap: 0.75rem; align-items:center;">
+                    <button class="btn secondary" @onclick="ToggleFullSchedule" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
+                        <span style="opacity: 0.7;">📅</span> @(_showFullSchedule ? "Hide Full Schedule" : "Full Schedule")
+                    </button>
                     <button class="btn secondary" @onclick="PrintSchedule" style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;">
                         <span style="opacity: 0.7;">🖨️</span> Export PDF
                     </button>
@@ -206,7 +209,7 @@
 
 </style>
 
-@if (State.Schedule.Any())
+@if (State.Schedule.Any() && _showFullSchedule)
 {
     var activePlayers = GetActivePlayers();
 
@@ -297,6 +300,7 @@ else
     private string Message = "";
     private bool IsGenerating = false;
     private bool _isGenerateLocked = false; // Lock generate after first use
+    private bool _showFullSchedule = false;
 
     protected override void OnInitialized()
     {
@@ -358,6 +362,11 @@ else
     private void UnlockGenerate()
     {
         _isGenerateLocked = false;
+    }
+
+    private void ToggleFullSchedule()
+    {
+        _showFullSchedule = !_showFullSchedule;
     }
 
     private string GetPlayerStyle(Player p)
