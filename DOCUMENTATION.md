@@ -33,6 +33,9 @@ The scheduler (`Services/SchedulerService.cs`) is optimized for:
 - **Resting Logic**: Prioritizes players who did not play in the previous round while maintaining full occupancy.
 - **No Consecutive Repeats**: Ensures no two players play in the same match together in two consecutive rounds.
 - **High Randomness**: Uses randomized selection and scoring to ensure varied schedules even with identical player lists.
+- **Live Countdown Timers**: Real-time "Time Remaining" for the current round and "Starts In" for the next round, updating every minute.
+- **Resting Player Tracking**: Dedicated section showing players not scheduled for the current/next round, allowing for better rotation visibility.
+- **Optimized Match Layout**: Vertical player name layout in match cards to accommodate full names without truncation.
 - **Gender Rules**: 
   - **Doubles**: Same-gender teams.
   - **Singles**: 1v1 matches.

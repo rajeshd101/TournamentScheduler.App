@@ -175,6 +175,18 @@
     private string Message = "";
     private string NewTournamentName = "";
 
+    protected override void OnInitialized()
+    {
+        // Ensure setup dates are always today's date
+        var today = DateTime.Today;
+        
+        // Preserve the time but update the date to today
+        State.Config.StartTime = today.Add(State.Config.StartTime.TimeOfDay);
+        State.Config.EndTime = today.Add(State.Config.EndTime.TimeOfDay);
+        
+        State.OnChange += StateHasChanged;
+    }
+
     private void SetOneDrivePath()
     {
         string oneDrive = System.Environment.GetEnvironmentVariable("OneDrive") ?? System.IO.Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile), "OneDrive");
