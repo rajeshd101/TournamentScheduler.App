@@ -32,6 +32,7 @@ The scheduler (`Services/SchedulerService.cs`) is optimized for:
 - **Fairness Engine**: Tracks game counts per player to ensure equal participation.
 - **Resting Logic**: Prioritizes players who did not play in the previous round while maintaining full occupancy.
 - **No Consecutive Repeats**: Ensures no two players play in the same match together in two consecutive rounds.
+- **Court Rotation**: Prioritizes moving players to different courts each round, aiming for every player to play on every court at least once.
 - **High Randomness**: Uses randomized selection and scoring to ensure varied schedules even with identical player lists.
 - **Live Countdown Timers**: Real-time "Time Remaining" for the current round and "Starts In" for the next round, updating every minute.
 - **Resting Player Tracking**: Dedicated section showing players not scheduled for the current/next round, allowing for better rotation visibility.

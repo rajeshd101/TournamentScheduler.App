@@ -33,6 +33,9 @@ public class SchedulerService
         // Track opponent matchups (how many times two players have faced each other)
         var opponentCounts = new Dictionary<string, int>();
 
+        // Track which courts each player has played on
+        var playerCourts = players.ToDictionary(p => p.Id, p => new HashSet<int>());
+
         // Track who played in the same match in the previous round to avoid consecutive repeats
         var playersInSameMatchLastRound = new Dictionary<string, HashSet<string>>();
         
@@ -79,6 +82,12 @@ public class SchedulerService
             IncrementOpponent(m.P1.Id, m.P4.Id);
             IncrementOpponent(m.P2.Id, m.P3.Id);
             IncrementOpponent(m.P2.Id, m.P4.Id);
+
+            // Track court history
+            if (playerCourts.ContainsKey(m.P1.Id)) playerCourts[m.P1.Id].Add(m.Court);
+            if (playerCourts.ContainsKey(m.P2.Id)) playerCourts[m.P2.Id].Add(m.Court);
+            if (playerCourts.ContainsKey(m.P3.Id)) playerCourts[m.P3.Id].Add(m.Court);
+            if (playerCourts.ContainsKey(m.P4.Id)) playerCourts[m.P4.Id].Add(m.Court);
 
             // Initialize last round pairings if this was the most recent round in history
             if (m.Round == startRound - 1)
@@ -230,10 +239,22 @@ public class SchedulerService
                                         if (playedTogetherLastRound) break;
                                     }
 
+                                    // Calculate court penalty (prefer courts the players haven't played on yet)
+                                    double courtPenalty = 0;
+                                    foreach (var player in p)
+                                    {
+                                        if (playerCourts[player.Id].Contains(court))
+                                        {
+                                            courtPenalty += 1;
+                                        }
+                                    }
+
                                     // Combined score: heavily weight partner penalty, then opponent balance
                                     // Add a massive penalty for playing together consecutively
+                                    // Add a penalty for repeating a court to encourage rotation
                                     // Add a small random factor to break ties and increase variety
                                     double score = (playedTogetherLastRound ? 10000 : 0) + 
+                                                   courtPenalty * 500 +
                                                    partnerPenalty * 100 + 
                                                    totalOpp * 10 + 
                                                    oppVariance + 
@@ -291,6 +312,12 @@ public class SchedulerService
                     IncrementOpponent(bestMatch[0].Id, bestMatch[3].Id);
                     IncrementOpponent(bestMatch[1].Id, bestMatch[2].Id);
                     IncrementOpponent(bestMatch[1].Id, bestMatch[3].Id);
+
+                    // Update court tracking
+                    foreach (var p in bestMatch)
+                    {
+                        playerCourts[p.Id].Add(court);
+                    }
                 }
             }
 
