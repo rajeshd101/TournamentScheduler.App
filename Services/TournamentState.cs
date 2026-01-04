@@ -146,24 +146,36 @@ public class TournamentState
         // Find maximum round number that has at least one scored match.
         int maxScoredRound = Schedule.Where(m => m.Score1.HasValue || m.Score2.HasValue).Select(m => m.Round).DefaultIfEmpty(0).Max();
         
-        // Also consider current time to identify the active round
-        int activeRound = 0;
+        // Identify the first round that hasn't finished yet
+        int firstUnfinishedRound = 0;
         var now = DateTime.Now;
-        var interval = Config.Duration + Config.BreakTime;
-        foreach(var g in Schedule.GroupBy(m => m.Round))
+        foreach(var g in Schedule.GroupBy(m => m.Round).OrderBy(g => g.Key))
         {
             if (DateTime.TryParse(g.First().Time, out var startTime))
             {
-                if (now >= startTime && now < startTime.AddMinutes(interval))
+                var endTime = startTime.AddMinutes(Config.Duration);
+                if (endTime > now)
                 {
-                    activeRound = g.Key;
+                    firstUnfinishedRound = g.Key;
                     break;
                 }
             }
         }
 
-        // We KEEP everything <= max(maxScoredRound, activeRound)
-        int preserveUntilRound = Math.Max(maxScoredRound, activeRound);
+        // We preserve rounds that are already finished OR have scores.
+        // If a round is current or future and has no scores, it can be regenerated.
+        int preserveUntilRound = maxScoredRound;
+        if (firstUnfinishedRound > 0)
+        {
+            // If we found an unfinished round, we preserve everything before it,
+            // unless a later round has scores (already handled by maxScoredRound).
+            preserveUntilRound = Math.Max(preserveUntilRound, firstUnfinishedRound - 1);
+        }
+        else if (Schedule.Any())
+        {
+            // If all rounds are in the past, preserve everything
+            preserveUntilRound = Math.Max(preserveUntilRound, Schedule.Max(m => m.Round));
+        }
         
         var history = Schedule.Where(m => m.Round <= preserveUntilRound).ToList();
         
