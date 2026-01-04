@@ -33,7 +33,7 @@ app.Lifetime.ApplicationStarted.Register(() =>
 {
     var url = "http://localhost:5000";
     Console.WriteLine($"\n========================================");
-    Console.WriteLine($"  Tournament Scheduler v1.5");
+    Console.WriteLine($"  TourneyPro v1.5");
     Console.WriteLine($"  Running at: {url}");
     Console.WriteLine($"  Press Ctrl+C to stop the application");
     Console.WriteLine($"========================================\n");
