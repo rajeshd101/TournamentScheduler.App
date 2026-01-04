@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\draje\\.gemini\\antigravity\\scratch\\tournament_scheduler\\TournamentScheduler.App\\TournamentScheduler.App.csproj": {}
+    "D:\\work\\tournament_scheduler\\TournamentScheduler.App\\TournamentScheduler.App.csproj": {}
   },
   "projects": {
-    "C:\\Users\\draje\\.gemini\\antigravity\\scratch\\tournament_scheduler\\TournamentScheduler.App\\TournamentScheduler.App.csproj": {
+    "D:\\work\\tournament_scheduler\\TournamentScheduler.App\\TournamentScheduler.App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\draje\\.gemini\\antigravity\\scratch\\tournament_scheduler\\TournamentScheduler.App\\TournamentScheduler.App.csproj",
+        "projectUniqueName": "D:\\work\\tournament_scheduler\\TournamentScheduler.App\\TournamentScheduler.App.csproj",
         "projectName": "TournamentScheduler.App",
-        "projectPath": "C:\\Users\\draje\\.gemini\\antigravity\\scratch\\tournament_scheduler\\TournamentScheduler.App\\TournamentScheduler.App.csproj",
+        "projectPath": "D:\\work\\tournament_scheduler\\TournamentScheduler.App\\TournamentScheduler.App.csproj",
         "packagesPath": "C:\\Users\\draje\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\draje\\.gemini\\antigravity\\scratch\\tournament_scheduler\\TournamentScheduler.App\\obj\\",
+        "outputPath": "D:\\work\\tournament_scheduler\\TournamentScheduler.App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -44,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net9.0": {
@@ -62,16 +62,20 @@
           "warn": true,
           "downloadDependencies": [
             {
-              "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[9.0.8, 9.0.8]"
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.11, 9.0.11]"
             },
             {
-              "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[9.0.8, 9.0.8]"
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[9.0.11, 9.0.11]"
             },
             {
-              "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[9.0.8, 9.0.8]"
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.11, 9.0.11]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.11, 9.0.11]"
             }
           ],
           "frameworkReferences": {
@@ -82,12 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

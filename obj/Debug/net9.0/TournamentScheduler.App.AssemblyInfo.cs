@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TournamentScheduler.App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3fc617cdbb12794a2cbd389ba3129472f7e0e8d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("TournamentScheduler.App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TournamentScheduler.App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
