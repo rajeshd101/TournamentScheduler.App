@@ -85,7 +85,7 @@
                         </div>
                         @if(currentRound != null)
                         {
-                            <span style="font-size:0.85rem; color:var(--text-muted);">@currentRound.First().Time</span>
+                            <span style="font-size:0.85rem; color:var(--text-muted);">@GetRoundTimeRange(currentRound.First().Time)</span>
                         }
                     </div>
                     @if(currentRound != null)
@@ -140,7 +140,7 @@
                     <div class="glass-panel" style="padding:1rem; border-left:4px solid #42a5f5; background:rgba(66,165,245,0.05);">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
                             <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Round @(nextRound.Key)</h3>
-                            <span style="font-size:0.85rem; color:var(--text-muted);">@nextRound.First().Time</span>
+                            <span style="font-size:0.85rem; color:var(--text-muted);">@GetRoundTimeRange(nextRound.First().Time)</span>
                         </div>
                         <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem;">
                             @foreach(var m in nextRound)
@@ -336,6 +336,16 @@
             return $"{(int)remaining.TotalMinutes}m left";
         }
         return "";
+    }
+
+    private string GetRoundTimeRange(string timeStr)
+    {
+        if (DateTime.TryParse(timeStr, out var startTime))
+        {
+            var endTime = startTime.AddMinutes(State.Config.Duration);
+            return $"{startTime:HH:mm} - {endTime:HH:mm}";
+        }
+        return timeStr;
     }
 
     // Helper: Get current round based on time
