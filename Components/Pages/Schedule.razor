@@ -82,6 +82,16 @@
         font-weight: bold;
     }
 
+    .current-round-row {
+        background: rgba(var(--primary-rgb), 0.1) !important;
+        border-left: 4px solid var(--primary);
+    }
+
+    .completed-round-row {
+        opacity: 0.5;
+        filter: grayscale(0.8);
+    }
+
     /* Simplified Layout for Schedule only */
     .schedule-layout {
         display: flex;
@@ -120,14 +130,14 @@
             
 
 
-        <div style="flex:1; overflow-x: auto; padding: 1.5rem;">
+        <div style="flex:1; overflow: auto; padding: 1.5rem; max-height: 70vh;">
             <table class="schedule-matrix-table" style="width:100%; border-collapse: separate; border-spacing: 0;">
-                <thead>
+                <thead style="position: sticky; top: 0; z-index: 20; background: var(--bg-panel);">
                     <tr>
-                        <th class="sticky-col" style="background:var(--bg-panel); z-index:10; left:0; border-bottom:2px solid var(--border); padding:1rem; text-align:left; top:0;">Round</th>
+                        <th class="sticky-col" style="background:var(--bg-panel); z-index:30; left:0; border-bottom:2px solid var(--border); padding:1rem; text-align:left; position: sticky; top: 0;">Round</th>
                             @for (int c = 1; c <= State.Config.Courts; c++)
                             {
-                                <th style="border-bottom:2px solid var(--border); padding:1rem; text-align:center; min-width:200px; background:rgba(0,0,0,0.1);">Court @c</th>
+                                <th style="border-bottom:2px solid var(--border); padding:1rem; text-align:center; min-width:200px; background:rgba(0,0,0,0.1); position: sticky; top: 0;">Court#@c</th>
                             }
                         </tr>
                     </thead>
@@ -137,8 +147,11 @@
                             int round = roundGroup.Key;
                             string time = roundGroup.First().Time;
                             var matches = roundGroup.ToList();
+                            bool isCurrent = IsRoundActive(time);
+                            bool isCompleted = IsRoundCompleted(matches);
+                            string rowClass = isCurrent ? "current-round-row" : (isCompleted ? "completed-round-row" : "");
                             
-                            <tr>
+                            <tr class="@rowClass">
                                 <!-- Round Header Column -->
                                 <td class="sticky-col" style="background:var(--bg-panel); z-index:10; left:0; border-bottom:1px solid var(--border); padding:1rem; font-weight:bold; border-right:1px solid var(--border);">
                                     <div style="display:flex; flex-direction:column;">
@@ -311,6 +324,12 @@ else
             return now >= t && now < t.Add(duration);
         }
         return false;
+    }
+
+    private bool IsRoundCompleted(List<Match> matches)
+    {
+        // A round is completed if all matches in it have scores
+        return matches.All(m => m.Score1.HasValue && m.Score2.HasValue);
     }
 
     private IEnumerable<(string Name, int Total, int Played, int Remaining)> GetPlayerStats(string gender)

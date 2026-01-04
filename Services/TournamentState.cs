@@ -135,39 +135,39 @@ public class TournamentState
         NotifyStateChanged();
     }
     
-    // Called when a player drops out: Preservation Logic
+    // Called when a player drops out or manual regeneration: Preservation Logic
     public void RegenerateSchedule(Services.SchedulerService scheduler)
     {
         if (!Schedule.Any()) return;
 
         // 1. Identify "Active History" vs "Future to Regenerate"
         // Rule: Keep matches that have Scores (Completed) OR are in the past/active round.
-        // Simple heuristic: If a match has a score, it's history.
-        // If a match is in a round that has ANY score, maybe keep that whole round?
-        // User Request: "remaining matches should be zero... schedule changed from point where he is out"
         
-        // Let's define "Point where he is out" as: The first round that has NOT started or has NO scores yet.
-        // Actually, safer: Keep all matches that have scores. Keep all matches in rounds < Current Time?
-        // Let's stick to: Keep all matches where Round < Current Theoretical Round?
-        // Or strictly: Keep matches with scores. Remove unscheduled/future matches involving the OUT player.
-        // But we need to regenerate the structure or else we leave holes.
-        
-        // Robust Logic:
         // Find maximum round number that has at least one scored match.
-        // Let's say Round 3 is active and partially scored. We keep Round 3.
-        // We regenerate Round 4+.
-        
         int maxScoredRound = Schedule.Where(m => m.Score1.HasValue || m.Score2.HasValue).Select(m => m.Round).DefaultIfEmpty(0).Max();
         
-        // Also consider time. If Round 3 is active but no scores yet, we probably shouldn't wipe it if people are on court.
-        // But for "Out", usually implies "I'm leaving now".
-        // Let's use maxScoredRound as the baseline.
-        // We KEEP everything <= maxScoredRound.
+        // Also consider current time to identify the active round
+        int activeRound = 0;
+        var now = DateTime.Now;
+        var interval = Config.Duration + Config.BreakTime;
+        foreach(var g in Schedule.GroupBy(m => m.Round))
+        {
+            if (DateTime.TryParse(g.First().Time, out var startTime))
+            {
+                if (now >= startTime && now < startTime.AddMinutes(interval))
+                {
+                    activeRound = g.Key;
+                    break;
+                }
+            }
+        }
+
+        // We KEEP everything <= max(maxScoredRound, activeRound)
+        int preserveUntilRound = Math.Max(maxScoredRound, activeRound);
         
-        var history = Schedule.Where(m => m.Round <= maxScoredRound).ToList();
+        var history = Schedule.Where(m => m.Round <= preserveUntilRound).ToList();
         
         // Active Players for Future (All currently not out)
-        // NOTE: The dropout player IS ALREADY marked IsOut in state before this is called.
         var activePlayers = Players.Where(p => !p.IsOut).ToList();
         
         if (activePlayers.Count < 4) return; // Cannot schedule
