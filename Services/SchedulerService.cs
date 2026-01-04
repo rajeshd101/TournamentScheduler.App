@@ -93,10 +93,38 @@ public class SchedulerService
                 
             case "MixedDouble":
             default:
-                // Mixed Doubles: M+F pairs
-                foreach (var m in men)
-                    foreach (var w in women)
-                        pairs.Add(new Pair(m, w));
+                // Mixed Doubles: M+F pairs preferred
+                var usedMen = new HashSet<string>();
+                var usedWomen = new HashSet<string>();
+                
+                // 1. Create as many M+F pairs as possible
+                int minCount = Math.Min(men.Count, women.Count);
+                for (int i = 0; i < minCount; i++)
+                {
+                    pairs.Add(new Pair(men[i], women[i]));
+                }
+                
+                // 2. If there are leftover men or women, pair them with each other (M+M or F+F)
+                if (men.Count > women.Count)
+                {
+                    for (int i = minCount; i < men.Count; i += 2)
+                    {
+                        if (i + 1 < men.Count)
+                            pairs.Add(new Pair(men[i], men[i + 1]));
+                        else
+                            pairs.Add(new Pair(men[i], men[i])); // Single if odd (will be handled by match logic)
+                    }
+                }
+                else if (women.Count > men.Count)
+                {
+                    for (int i = minCount; i < women.Count; i += 2)
+                    {
+                        if (i + 1 < women.Count)
+                            pairs.Add(new Pair(women[i], women[i + 1]));
+                        else
+                            pairs.Add(new Pair(women[i], women[i])); // Single if odd
+                    }
+                }
                 break;
         }
         
@@ -236,24 +264,17 @@ public class SchedulerService
                 // Freshness (Can play NOW vs Next)
                 bool isFresh = ids.All(id => playerFreeAtRound[id] <= round);
                 
-                // Buckets: Fresh players preferred, non-fresh as fallback for 100% court fill
-                if (isFresh)
-                {
-                    if (isTarget) return isFair ? 0 : 1;
-                    else return isFair ? 2 : 3;
-                }
-                else
-                {
-                    return 4; // Non-fresh fallback bucket (ignore rest rule to fill courts)
-                }
-            }
+            // Buckets: Ignore resting rule as per user request
+            // We still prioritize Target gender and Fairness
+            if (isTarget) return isFair ? 0 : 1;
+            else return isFair ? 2 : 3;
+        }
 
             // Bucketize
-            var bucket0 = new List<Match>(); // Target + Fair + Fresh
-            var bucket1 = new List<Match>(); // Target + Ahead + Fresh
-            var bucket2 = new List<Match>(); // NonTarget + Fair + Fresh
-            var bucket3 = new List<Match>(); // NonTarget + Ahead + Fresh
-            var bucket4 = new List<Match>(); // Non-Fresh (fallback for 100% court utilization)
+            var bucket0 = new List<Match>(); // Target + Fair
+            var bucket1 = new List<Match>(); // Target + Ahead
+            var bucket2 = new List<Match>(); // NonTarget + Fair
+            var bucket3 = new List<Match>(); // NonTarget + Ahead
 
             foreach(var m in allValidTime)
             {
@@ -262,7 +283,6 @@ public class SchedulerService
                 else if (p == 1) bucket1.Add(m);
                 else if (p == 2) bucket2.Add(m);
                 else if (p == 3) bucket3.Add(m);
-                else if (p == 4) bucket4.Add(m);
             }
             
             // Sort buckets by specific criteria (Fairness first - equal games for all)
@@ -294,7 +314,6 @@ public class SchedulerService
             SortBucket(bucket1);
             SortBucket(bucket2);
             SortBucket(bucket3);
-            SortBucket(bucket4);
             
             // Fill Logic
             var roundSelection = new List<Match>();
@@ -322,7 +341,6 @@ public class SchedulerService
             FillFrom(bucket1); // This ensures we maximize Target Gender even if they are ahead
             FillFrom(bucket2);
             FillFrom(bucket3);
-            FillFrom(bucket4); // Fallback: use non-fresh matches to ensure 100% court fill
 
 
 

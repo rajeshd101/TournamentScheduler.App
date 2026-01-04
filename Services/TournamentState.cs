@@ -87,6 +87,12 @@ public class TournamentState
         }
     }
 
+    public void RemoveAllPlayers()
+    {
+        Players.Clear();
+        NotifyStateChanged();
+    }
+
     public void UpdatePlayer(string id, string name, string gender)
     {
         var p = Players.FirstOrDefault(x => x.Id == id);

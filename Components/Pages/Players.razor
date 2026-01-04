@@ -190,6 +190,7 @@
         <div class="bulk-actions">
             <textarea @bind="BulkText" placeholder="Paste names here (one per line) to bulk add..." rows="3"></textarea>
             <button class="btn secondary" @onclick="BulkAdd">Bulk Add</button>
+            <button class="btn secondary" style="color:var(--danger); border-color:rgba(239, 68, 68, 0.3);" @onclick="RemoveAll">Remove All</button>
             <button class="btn accent" style="margin-left:auto" @onclick="AutoFill">Auto-Fill Remaining</button>
         </div>
     </div>
@@ -320,6 +321,15 @@
         {
             string g = i % 2 == 0 ? "F" : "M";
             State.AddPlayer($"Player {i}", g, 3);
+        }
+    }
+
+    private async Task RemoveAll()
+    {
+        bool confirmed = await JS.InvokeAsync<bool>("confirm", "Are you sure you want to remove ALL players? This cannot be undone.");
+        if (confirmed)
+        {
+            State.RemoveAllPlayers();
         }
     }
 
