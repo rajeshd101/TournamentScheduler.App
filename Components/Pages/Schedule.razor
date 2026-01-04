@@ -74,7 +74,15 @@
                 @* Current Round Panel *@
                 <div class="glass-panel" style="padding:1rem; border-left:4px solid #ffc107; background:rgba(255,193,7,0.05);">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
-                        <h3 style="margin:0; color:#ffc107; font-size:1rem;">🎯 Current Round @(currentRound?.Key ?? 0)</h3>
+                        <div style="display:flex; align-items:center; gap:0.75rem;">
+                            <h3 style="margin:0; color:#ffc107; font-size:1rem;">🎯 Current Round @(currentRound?.Key ?? 0)</h3>
+                            @if(currentRound != null && IsRoundActive(currentRound.First().Time))
+                            {
+                                <span class="badge" style="background:rgba(255,193,7,0.2); color:#ffc107; font-size:0.8rem; padding:2px 8px;">
+                                    ⏱️ @GetTimeRemaining(currentRound.First().Time)
+                                </span>
+                            }
+                        </div>
                         @if(currentRound != null)
                         {
                             <span style="font-size:0.85rem; color:var(--text-muted);">@currentRound.First().Time</span>
@@ -113,7 +121,15 @@
                 @* Next Round Panel *@
                 <div class="glass-panel" style="padding:1rem; border-left:4px solid #42a5f5; background:rgba(66,165,245,0.05);">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
-                        <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Next Round @(nextRound?.Key ?? 0)</h3>
+                        <div style="display:flex; align-items:center; gap:0.75rem;">
+                            <h3 style="margin:0; color:#42a5f5; font-size:1rem;">⏭️ Next Round @(nextRound?.Key ?? 0)</h3>
+                            @if(nextRound != null)
+                            {
+                                <span class="badge" style="background:rgba(66,165,245,0.2); color:#42a5f5; font-size:0.8rem; padding:2px 8px;">
+                                    ⏳ @GetTimeUntil(nextRound.First().Time)
+                                </span>
+                            }
+                        </div>
                         @if(nextRound != null)
                         {
                             <span style="font-size:0.85rem; color:var(--text-muted);">@nextRound.First().Time</span>
@@ -319,11 +335,15 @@ else
     private bool IsGenerating = false;
     private bool _isGenerateLocked = false; // Lock generate after first use
     private bool _showFullSchedule = false;
+    private System.Threading.Timer? _timer;
 
     protected override void OnInitialized()
     {
         State.OnChange += StateHasChanged;
         State.OnSearchChanged += StateHasChanged; // Re-render on search
+        
+        // Start a timer to refresh the UI every minute for the countdowns
+        _timer = new System.Threading.Timer(_ => InvokeAsync(StateHasChanged), null, 1000, 60000);
     }
 
     private IEnumerable<Match> GetFilteredSchedule()
@@ -341,6 +361,7 @@ else
     {
         State.OnChange -= StateHasChanged;
         State.OnSearchChanged -= StateHasChanged;
+        _timer?.Dispose();
     }
 
     private bool IsGenerationDisabled
@@ -444,6 +465,29 @@ else
             return now >= t && now < t.Add(duration);
         }
         return false;
+    }
+
+    private string GetTimeRemaining(string timeStr)
+    {
+        if (DateTime.TryParse(timeStr, out var startTime))
+        {
+            var endTime = startTime.AddMinutes(State.Config.Duration);
+            var remaining = endTime - DateTime.Now;
+            if (remaining.TotalMinutes <= 0) return "Finishing...";
+            return $"{(int)remaining.TotalMinutes}m left";
+        }
+        return "";
+    }
+
+    private string GetTimeUntil(string timeStr)
+    {
+        if (DateTime.TryParse(timeStr, out var startTime))
+        {
+            var until = startTime - DateTime.Now;
+            if (until.TotalMinutes <= 0) return "Starting...";
+            return $"Starts in {(int)until.TotalMinutes}m";
+        }
+        return "";
     }
 
     private bool IsRoundCompleted(List<Match> matches)
