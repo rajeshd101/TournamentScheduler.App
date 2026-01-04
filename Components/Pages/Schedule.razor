@@ -87,15 +87,15 @@
                             {
                                 <div style="background:rgba(255,255,255,0.05); border-radius:6px; padding:0.5rem; flex:1; min-width:200px;">
                                     <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.25rem;">Court#@m.Court</div>
-                                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                                        <div style="display:flex; gap:4px;">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; gap: 1rem;">
+                                        <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
                                             <span style="@GetPlayerStyle(m.P1)">@m.P1.Name</span>
                                             <span style="@GetPlayerStyle(m.P2)">@m.P2.Name</span>
                                         </div>
                                         <span style="font-weight:bold; color:var(--accent); font-size:0.9rem;">
                                             vs
                                         </span>
-                                        <div style="display:flex; gap:4px;">
+                                        <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
                                             <span style="@GetPlayerStyle(m.P3)">@m.P3.Name</span>
                                             <span style="@GetPlayerStyle(m.P4)">@m.P4.Name</span>
                                         </div>
@@ -126,13 +126,13 @@
                             {
                                 <div style="background:rgba(255,255,255,0.05); border-radius:6px; padding:0.5rem; flex:1; min-width:200px;">
                                     <div style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.25rem;">Court#@m.Court</div>
-                                    <div style="display:flex; justify-content:space-between; align-items:center;">
-                                        <div style="display:flex; gap:4px;">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; gap: 1rem;">
+                                        <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
                                             <span style="@GetPlayerStyle(m.P1)">@m.P1.Name</span>
                                             <span style="@GetPlayerStyle(m.P2)">@m.P2.Name</span>
                                         </div>
                                         <span style="font-weight:bold; color:var(--text-muted); font-size:0.8rem;">vs</span>
-                                        <div style="display:flex; gap:4px;">
+                                        <div style="display:flex; flex-direction:column; gap:4px; flex:1;">
                                             <span style="@GetPlayerStyle(m.P3)">@m.P3.Name</span>
                                             <span style="@GetPlayerStyle(m.P4)">@m.P4.Name</span>
                                         </div>
@@ -275,8 +275,8 @@
                                         {
                                             <div style="background:rgba(255,255,255,0.03); border-radius:6px; padding:0.5rem; display:flex; flex-direction:column; gap:0.5rem;">
                                                 <!-- Team 1 -->
-                                                <div style="display:flex; gap:4px; justify-content:center; align-items:center;">
-                                                    @if(match.ServingTeam == 1) { <span style="font-size:0.8rem;" title="Serves first">🏓</span> }
+                                                <div style="display:flex; flex-direction:column; gap:4px; align-items:center; position:relative;">
+                                                    @if(match.ServingTeam == 1) { <span style="position:absolute; left:-15px; top:50%; transform:translateY(-50%); font-size:0.8rem;" title="Serves first">🏓</span> }
                                                     <div style="@GetPlayerStyle(match.P1)">@match.P1.Name</div>
                                                     <div style="@GetPlayerStyle(match.P2)">@match.P2.Name</div>
                                                 </div>
@@ -284,8 +284,8 @@
                                                 <div style="text-align:center; font-size:0.75rem; color:var(--text-muted); font-weight:bold;">VS</div>
                                                 
                                                 <!-- Team 2 -->
-                                                <div style="display:flex; gap:4px; justify-content:center; align-items:center;">
-                                                    @if(match.ServingTeam == 2) { <span style="font-size:0.8rem;" title="Serves first">🏓</span> }
+                                                <div style="display:flex; flex-direction:column; gap:4px; align-items:center; position:relative;">
+                                                    @if(match.ServingTeam == 2) { <span style="position:absolute; left:-15px; top:50%; transform:translateY(-50%); font-size:0.8rem;" title="Serves first">🏓</span> }
                                                     <div style="@GetPlayerStyle(match.P3)">@match.P3.Name</div>
                                                     <div style="@GetPlayerStyle(match.P4)">@match.P4.Name</div>
                                                 </div>
@@ -392,7 +392,7 @@ else
          var recent = State.Players.FirstOrDefault(x => x.Id == p.Id);
          string color = recent?.Color ?? "#333";
          string textColor = State.GetContrastColor(color);
-         return $"background-color: {color}; color: {textColor}; padding: 2px 6px; border-radius: 4px; font-weight: 500; font-size: 0.85rem; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 120px;";
+         return $"background-color: {color}; color: {textColor}; padding: 2px 8px; border-radius: 4px; font-weight: 500; font-size: 0.85rem; text-align: center; white-space: nowrap; width: 100%; display: block;";
     }
 
     private HashSet<string> GetActivePlayers()
