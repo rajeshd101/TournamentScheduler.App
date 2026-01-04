@@ -1,4 +1,4 @@
-# Tournament Scheduler v1.0
+# TourneyPro v1.5
 
 **Author:** Raj D  
 **Email:** drajesh@hotmail.com
@@ -84,7 +84,7 @@ For other devices to access:
 
 **Open PowerShell as Administrator and run:**
 ```
-New-NetFirewallRule -DisplayName "Tournament Scheduler" -Direction Inbound -Protocol TCP -LocalPort 5000 -Action Allow
+New-NetFirewallRule -DisplayName "TourneyPro" -Direction Inbound -Protocol TCP -LocalPort 5000 -Action Allow
 ```
 
 ---
@@ -104,4 +104,4 @@ Contact: **drajesh@hotmail.com**
 
 ---
 
-*Thank you for using Tournament Scheduler!* 🏓
+*Thank you for using TourneyPro!* 🏓

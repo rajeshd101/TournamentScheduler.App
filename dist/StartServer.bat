@@ -1,6 +1,6 @@
 @echo off
 echo ============================================
-echo   Tournament Scheduler v1.0
+echo   TourneyPro v1.5
 echo   Author: Raj D (drajesh@hotmail.com)
 echo ============================================
 echo.
