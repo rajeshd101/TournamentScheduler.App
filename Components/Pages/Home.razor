@@ -177,12 +177,19 @@
 
     protected override void OnInitialized()
     {
-        // Ensure setup dates are always today's date
-        var today = DateTime.Today;
-        
-        // Preserve the time but update the date to today
-        State.Config.StartTime = today.Add(State.Config.StartTime.TimeOfDay);
-        State.Config.EndTime = today.Add(State.Config.EndTime.TimeOfDay);
+        // If this is a fresh tournament (no matches), default to current time
+        if (!State.Schedule.Any())
+        {
+            State.Config.StartTime = DateTime.Now;
+            State.Config.EndTime = DateTime.Now.AddHours(3);
+        }
+        else
+        {
+            // For existing tournaments, ensure dates are today but preserve times
+            var today = DateTime.Today;
+            State.Config.StartTime = today.Add(State.Config.StartTime.TimeOfDay);
+            State.Config.EndTime = today.Add(State.Config.EndTime.TimeOfDay);
+        }
         
         State.OnChange += StateHasChanged;
     }

@@ -36,8 +36,8 @@ public class TournamentConfig
     public int Courts { get; set; } = 4;
     public int Duration { get; set; } = 12;
     public int BreakTime { get; set; } = 1;
-    public DateTime StartTime { get; set; } = DateTime.Today.AddHours(18); // 18:00 Today
-    public DateTime EndTime { get; set; } = DateTime.Today.AddHours(21).AddMinutes(30);   // 21:30 Today
+    public DateTime StartTime { get; set; } = DateTime.Now; 
+    public DateTime EndTime { get; set; } = DateTime.Now.AddHours(3);
     public string Mode { get; set; } = "balanced"; // 'balanced' or 'complete'
     public string GenderRule { get; set; } = "Doubles"; // Doubles, Singles, MixedDouble
 }
