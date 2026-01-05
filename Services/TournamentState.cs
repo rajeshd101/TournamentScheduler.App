@@ -241,6 +241,12 @@ public class TournamentState
                     this.Players = data.Players ?? new List<Player>();
                     this.Config = data.Config ?? new TournamentConfig();
                     this.Schedule = data.Schedule ?? new List<Match>();
+
+                    // Enforce today's date on load but preserve the saved times
+                    var today = DateTime.Today;
+                    this.Config.StartTime = today.Add(this.Config.StartTime.TimeOfDay);
+                    this.Config.EndTime = today.Add(this.Config.EndTime.TimeOfDay);
+
                     // No need to set Name again
                     NotifyStateChanged(autoSave: false); // Don't verify save on load
                 }
